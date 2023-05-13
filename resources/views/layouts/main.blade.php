@@ -193,7 +193,7 @@
             @include('partials.header')
 
             {{-- content --}}
-            <main class="h-full overflow-y-auto">
+            <main class="h-full pb-16 overflow-y-auto">
                 @yield('content')
             </main>
 
