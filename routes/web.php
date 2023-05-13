@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
+Route::get('/user', [UserController::class, 'index']);
