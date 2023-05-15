@@ -17,16 +17,15 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $remember = $request->boolean('remember');
-        $credentials = $request->only(['email','password']);
+        $credentials = $request->only(['email', 'password']);
 
         if (Auth::attempt($credentials, $remember)) {
             request()->session()->regenerate();
             $data = [
                 "success" => true,
-                "redirect_to" => auth()->user()->isUser() ? route('dashboard') : route ('Admin.dashboard'),
                 "message" => "Login Berhasil"
             ];
-            return response()->json($data);
+            return redirect()->route('dashboard')->with('toast_success', 'Berhasil Login');
         }
 
         $data = [

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Logout;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,20 +37,22 @@ use App\Http\Controllers\UserController;
 
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('role:admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('Admin.dashboard');
-    });
-    // Route::get('/', function () {
-    //     return redirect()->route('Admin.dashboard');
-    // });
+  Route::middleware('role:admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('Admin.dashboard');
+  });
+  // Route::get('/', function () {
+  //     return redirect()->route('Admin.dashboard');
+  // });
 });
 
 Route::middleware('guest')->group(
-    function () {
-        Route::get('/', [LoginController::class, 'index'])->name('login');
-        Route::post('/', [LoginController::class, 'login']);
-        Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-    }
+  function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::post('/', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+  }
 );
 
-
+//make route to /dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
