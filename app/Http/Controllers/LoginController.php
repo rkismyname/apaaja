@@ -25,7 +25,12 @@ class LoginController extends Controller
                 "success" => true,
                 "message" => "Login Berhasil"
             ];
-            return redirect()->route('dashboard')->with('toast_success', 'Berhasil Login');
+            if (auth()->user()->isAdmin()) {
+                return redirect()->route('admin')->with('toast_success', 'Berhasil Login');
+            }
+            else if (auth()->user()->isUser()) {
+                return redirect()->route('customer')->with('toast_success', 'Berhasil Login');
+            }
         }
 
         $data = [

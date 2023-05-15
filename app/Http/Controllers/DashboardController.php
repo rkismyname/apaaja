@@ -12,4 +12,9 @@ class DashboardController extends Controller
             "title" => "Dashboard"
         ]);
     }
+    public function dashboard(Request $request)
+    {
+        // return the view for the dashboard page
+        return view('dashboard');
+}
 }
