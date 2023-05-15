@@ -16,24 +16,30 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $remember = $request->boolean('remember');
+        $credentials = $request->only(['email','password']);
 
-            return redirect()->route('dashboard')->withToastSuccess('Selamat Datang di Halaman Dashboard');
+        if (Auth::attempt($credentials, $remember)) {
+            request()->session()->regenerate();
+            $data = [
+                "success" => true,
+                "redirect_to" => auth()->user()->isUser() ? route('dashboard') : route ('Admin.dashboard'),
+                "message" => "Login Berhasil"
+            ];
+            return response()->json($data);
         }
 
-        return back()->with('toast_error', 'Email dan Password Salah');
+        $data = [
+            "success" => false,
+            "message" => "Login gagal"
+        ];
+        return response()->json($data)->setStatusCode(400);
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect()->route('login')->with('toast_success', 'Berhasil Logout');
