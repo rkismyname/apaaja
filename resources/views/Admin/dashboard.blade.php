@@ -6,7 +6,7 @@
             Dashboard
         </h2>
         <!-- CTA -->
-        <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+        {{-- <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
             href="https://github.com/estevanmaito/windmill-dashboard">
             <div class="flex items-center">
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -17,7 +17,7 @@
                 <span>Star this project on GitHub</span>
             </div>
             <span>View more &RightArrow;</span>
-        </a>
+        </a> --}}
         <!-- Cards -->
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <!-- Card -->
@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total clients
+                        Pengajuan Belum Dikonfirmasi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                         6389
@@ -49,7 +49,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Account balance
+                        Pengajuan Sudah Dikonfirmasi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                         $ 46,760.89
@@ -67,7 +67,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        New sales
+                        Pengajuan Batal/Ditolak
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                         376
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+            {{-- <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                 <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -91,10 +91,10 @@
                         35
                     </p>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
-        <!-- New Table -->
+        {{-- <!-- New Table -->
         <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
@@ -468,7 +468,7 @@
                     </nav>
                 </span>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Charts -->
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">

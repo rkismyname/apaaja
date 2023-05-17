@@ -65,3 +65,5 @@ Route::middleware('guest')->group(
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('/perusahaan', [PerusahaanController::class, 'index']);
+
+Route::get('/user', [UserController::class, 'index']);
