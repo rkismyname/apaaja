@@ -26,12 +26,13 @@ class RegisterController extends Controller
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
         $user->password = Hash::make($validateData['password']);
+        $user->role_id = 2;
         // dd($validateData);
         $user->save();
 
         $request->session()->flash('success', 'Registration Success');
 
-        return redirect('/');
+        return redirect()->route('login');
 
     }
 

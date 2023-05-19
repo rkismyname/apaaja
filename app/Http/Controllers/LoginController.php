@@ -16,10 +16,10 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $remember = $request->boolean('remember');
+        // $remember = $request->boolean('remember');
         $credentials = $request->only(['email', 'password']);
 
-        if (Auth::attempt($credentials, $remember)) {
+        if (Auth::attempt($credentials)) {
             request()->session()->regenerate();
             $data = [
                 "success" => true,

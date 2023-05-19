@@ -7,6 +7,8 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\PeroranganController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -41,6 +43,7 @@ use Illuminate\Auth\Events\Logout;
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
+        Route::get('/user', [UserController::class, 'index']);
         // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     });
     // Route::get('/', function () {
@@ -64,6 +67,8 @@ Route::middleware('guest')->group(
 //make route to /dashboard
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('/perusahaan', [PerusahaanController::class, 'index']);
+Route::get('/perusahaan', [PerusahaanController::class, 'sertif_bu'])->name('form_bu');
+Route::post('/perusahaan', [PerusahaanController:: class, 'store'])->name('syarat_bu');
 
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
