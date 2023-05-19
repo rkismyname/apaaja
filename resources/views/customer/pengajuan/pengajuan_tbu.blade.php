@@ -32,7 +32,7 @@
                 @enderror
             </div>
             <!-- Field untuk unggahan file NPWP BU -->
-            <div class="px-4 py-3 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <label class="block text-sm" for="npwp_bu">File NPWP Perusahaan (PDF)</label>
                 <input
                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"

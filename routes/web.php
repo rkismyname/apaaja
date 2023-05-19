@@ -39,7 +39,7 @@ use Illuminate\Auth\Events\Logout;
 // Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
 // Route::get('/user', [UserController::class, 'index']);
 
-
+//Routing Role : Admin
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
@@ -50,9 +50,15 @@ Route::middleware('auth')->group(function () {
     //     return redirect()->route('Admin.dashboard');
     // });
 });
+
+//Routing Role : User
 Route::middleware('auth')->group(function () {
     Route::middleware('role:user')->group(function () {
-Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+        Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+        Route::get('/perusahaan', [PerusahaanController::class, 'sertif_bu'])->name('form_bu');
+        Route::post('/perusahaan', [PerusahaanController::class, 'store'])->name('syarat_bu');
+        Route::get('/perorangan', [PeroranganController::class, 'sertif_tk'])->name('form_tk');
+        Route::post('/perorangan', [PeroranganController::class, 'store'])->name('syarat_tk');
     });
 });
 
@@ -60,15 +66,14 @@ Route::middleware('guest')->group(
     function () {
         Route::get('/', [LoginController::class, 'index'])->name('login');
         Route::post('/', [LoginController::class, 'login']);
-        Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+        Route::get('/register', [RegisterController::class, 'index']);
+        Route::post('/register', [RegisterController::class, 'store'])->name('register');
     }
 );
 
-//make route to /dashboard
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+// make route to /dashboard
+// Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('/perusahaan', [PerusahaanController::class, 'sertif_bu'])->name('form_bu');
-Route::post('/perusahaan', [PerusahaanController:: class, 'store'])->name('syarat_bu');
-
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+// Route::get('/register', [RegisterController::class, 'index']);
+// Route::post('/register', [RegisterController::class, 'store'])->name('register');
