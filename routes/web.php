@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -72,6 +73,8 @@ Route::middleware('guest')->group(
 );
 
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/admin/md-perorangan', [AdminController::class, 'showPerorangan']);
+Route::get('admin/md-perusahaan', [AdminController::class, 'showPerusahaan' ]);
 // make route to /dashboard
 // Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 

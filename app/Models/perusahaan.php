@@ -9,5 +9,6 @@ class perusahaan extends Model
 {
     use HasFactory;
 
+    protected $table = 'perusahaan';
     protected $fillable = ['nama_perusahaan', 'nama_pj', 'bidang', 'no_telepon'];
 }

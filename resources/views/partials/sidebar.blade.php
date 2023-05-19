@@ -67,11 +67,11 @@
                                     aria-label="submenu">
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/login.html">Perusahaan</a>
+                                        <a class="w-full" href="/admin/md-perusahaan">Perusahaan</a>
                                     </li>
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="pages/create-account.html">
+                                        <a class="w-full" href="/admin/md-perorangan">
                                             Perorangan
                                         </a>
                                     </li>
@@ -185,8 +185,8 @@
                         <li class="relative px-6 py-3">
                             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="/perorangan">
-                                <svg xmlns="http://www.w3.org/2000/svg" class='w-5 h-5' aria-hidden="true" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" class='w-5 h-5' aria-hidden="true"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="9" cy="7" r="4"></circle>
