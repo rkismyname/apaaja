@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function dashboardAdmin()
     {
         return view ('Admin.dashboard', [
             "title" => "Dashboard"
         ]);
     }
-    public function dashboard(Request $request)
+    public function dashboardCustomer()
     {
-        // return the view for the dashboard page
-        return view('dashboard');
-}
+        return view('customer.dashboard', [
+            'tittle' => 'Dashboard',
+        ]);
+    }
 }

@@ -1,15 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\MasterDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\Customer\PengajuanController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\PerusahaanController;
-use App\Http\Controllers\PeroranganController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -43,8 +40,10 @@ use Illuminate\Auth\Events\Logout;
 //Routing Role : Admin
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
-        Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
+        Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
         Route::get('/user', [UserController::class, 'index']);
+        Route::get('/admin/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
+        Route::get('admin/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
         // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     });
     // Route::get('/', function () {
@@ -55,11 +54,11 @@ Route::middleware('auth')->group(function () {
 //Routing Role : User
 Route::middleware('auth')->group(function () {
     Route::middleware('role:user')->group(function () {
-        Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
-        Route::get('/perusahaan', [PerusahaanController::class, 'sertif_bu'])->name('form_bu');
-        Route::post('/perusahaan', [PerusahaanController::class, 'store'])->name('syarat_bu');
-        Route::get('/perorangan', [PeroranganController::class, 'sertif_tk'])->name('form_tk');
-        Route::post('/perorangan', [PeroranganController::class, 'store'])->name('syarat_tk');
+        Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
+        Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
+        Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');
+        Route::get('/perorangan', [PengajuanController::class, 'sertif_tk'])->name('form_tk');
+        Route::post('/perorangan', [PengajuanController::class, 'stored'])->name('syarat_tk');
     });
 });
 
@@ -73,8 +72,7 @@ Route::middleware('guest')->group(
 );
 
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-Route::get('/admin/md-perorangan', [AdminController::class, 'showPerorangan']);
-Route::get('admin/md-perusahaan', [AdminController::class, 'showPerusahaan' ]);
+
 // make route to /dashboard
 // Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
