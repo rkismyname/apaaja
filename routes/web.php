@@ -19,23 +19,6 @@ use Illuminate\Auth\Events\Logout;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
-
-// Route::get('/', function () {
-//     return view('login');
-// });
-
-// Route::get('/', [LoginController::class, 'index'])->middleware('guest');
-// Route::post('/', [LoginController::class, 'login'])->name('login');
-// Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-
-// Route::get('/register', [RegisterController::class, 'index']);
-// Route::post('/register', [RegisterController::class, 'store']);
-
-// Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
-// Route::get('/user', [UserController::class, 'index']);
 
 //Routing Role : Admin
 Route::middleware('auth')->group(function () {
@@ -44,11 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/user', [UserController::class, 'index']);
         Route::get('/admin/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('admin/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
-        // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     });
-    // Route::get('/', function () {
-    //     return redirect()->route('Admin.dashboard');
-    // });
 });
 
 //Routing Role : User
@@ -72,9 +51,3 @@ Route::middleware('guest')->group(
 );
 
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-
-// make route to /dashboard
-// Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-
-// Route::get('/register', [RegisterController::class, 'index']);
-// Route::post('/register', [RegisterController::class, 'store'])->name('register');
