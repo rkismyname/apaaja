@@ -9,11 +9,12 @@
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-4 py-3">#</th>
-                        <th class="px-4 py-3">Nama User</th>
-                        <th class="px-4 py-3">Nama Perorangan</th>
-                        <th class="px-4 py-3">Kategori Layanan</th>
+                        <th class="px-4 py-3">Kategori</th>
                         <th class="px-4 py-3">Layanan</th>
-                        <th class="px-4 py-3">Bukti Transfer</th>
+                        <th class="px-4 py-3">Tipe</th>
+                        <th class="px-4 py-3">Harga Jual</th>
+                        <th class="px-4 py-3">Harga Produksi</th>
+                        <th class="px-4 py-3">Harga Pokok</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>

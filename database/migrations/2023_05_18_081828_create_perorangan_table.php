@@ -16,7 +16,9 @@ class CreatePeroranganTable extends Migration
         Schema::create('perorangan', function (Blueprint $table) {
             $table->id('id_individual');
             $table->string('nama_perorangan');
-            $table->string('nama_perusahaan');
+            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->string('email');
             $table->string('no_telepon');
             $table->timestamps();
         });

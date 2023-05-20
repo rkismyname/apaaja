@@ -18,7 +18,10 @@ class CreatePerusahaanTable extends Migration
             $table->string('nama_perusahaan');
             $table->string('nama_pj');
             $table->string('bidang');
-            $table->string('no_telepon');
+            $table->string('tlp_perusahaan');
+            $table->string('email_perusahaan');
+            $table->string('tlp_pj');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

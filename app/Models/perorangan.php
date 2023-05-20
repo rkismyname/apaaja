@@ -10,5 +10,15 @@ class perorangan extends Model
     use HasFactory;
 
     protected $table = 'perorangan';
-    protected $fillable = ['nama_perorangan', 'nama_perusahaan', 'no_telepon'];
+    protected $fillable = [
+        'nama_perorangan', 
+        'tanggal_lahir',
+        'alamat',
+        'email',
+        'no_telepon'
+    ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date'
+    ];
 }

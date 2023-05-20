@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\MasterDataController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Customer\PengajuanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ViewPengajuanController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -27,6 +29,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/user', [UserController::class, 'index']);
         Route::get('/admin/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('admin/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
+        Route::get('/admin/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
+        Route::get('/admin/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
+        Route::get('/admin/layanan', [LayananController::class, 'index'])->name('layanan');
     });
 });
 
@@ -45,9 +50,9 @@ Route::middleware('guest')->group(
     function () {
         Route::get('/', [LoginController::class, 'index'])->name('login');
         Route::post('/', [LoginController::class, 'login']);
-        Route::get('/register', [RegisterController::class, 'index']);
-        Route::post('/register', [RegisterController::class, 'store'])->name('register');
     }
 );
 
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');

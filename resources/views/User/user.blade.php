@@ -523,11 +523,23 @@
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         @foreach ($users as $user)
-                            <tr class="text-gray-700 dark:text-gray-400">
+                            <tr class="text-gray-400 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $user->id }}</td>
                                 <td class="px-4 py-3">{{ $user->name }}</td>
                                 <td class="px-4 py-3">{{ $user->email }}</td>
-                                <td class="px-4 py-3">{{ $user->role->name }}</td>
+                                <td class="px-4 py-3">
+                                    @if ($user->role->name == 'admin')
+                                        <span class="bg-blue-500 text-black px-2 py-1 rounded-full">
+                                            {{ $user->role->name }}
+                                        </span>
+                                    @elseif ($user->role->name == 'user')
+                                        <span class="bg-yellow-500 text-black px-2 py-1 rounded-full">
+                                            {{ $user->role->name }}
+                                        </span>
+                                    @else
+                                        {{ $user->role->name }}
+                                    @endif
+                                </td>
                                 <td class="px-4 py-3">
                                     <!-- Actions -->
                                 </td>
