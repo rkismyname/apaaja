@@ -11,7 +11,7 @@
                             <th class="text-center">#</th>
                             {{-- <th class="text-center">Nama User</th> --}}
                             <th class="text-center">Nama Perorangan</th>
-                            <th class="text-center">Nama Perusahaan</th>
+                            <th class="text-center">Alamat</th>
                             <th class="text-center">No Telp</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -21,7 +21,7 @@
                             <tr class="text-gray-700 dark:text-gray-400">
 
                                 <td class="text-center">{{ $perorangan->id_individual }}</td>
-                                <td class="text-center">{{ $perorangan->nama_perorangan }}</td>
+                                <td class="text-center">{{ $perorangan->alamat }}</td>
                                 <td class="text-center">{{ $perorangan->nama_perusahaan }}</td>
                                 <td class="text-center">{{ $perorangan->no_telepon }}</td>
                                 {{-- <td>{{ $perorangan->nama_perorangan}}</td>

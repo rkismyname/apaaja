@@ -9,12 +9,14 @@ class Layanan extends Model
 {
     use HasFactory;
     protected $table = 'layanan';
+    protected $primaryKey = 'layanan_id';
     protected $fillable = [
         'kategori',
         'layanan',
         'tipe',
         'hrg_jual',
         'hrg_produksi',
-        'hrg_pokok'
+        'hrg_pokok',
+        'id'
     ];
 }

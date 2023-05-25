@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class sertif_bu extends Model
 {
     protected $table = 'sertif_bu'; // Nama tabel yang digunakan untuk menyimpan data perusahaan
-
+    // protected $primaryKey = 'bu_id';
     protected $fillable = [
         'nib',
         'npwp_bu',
@@ -15,5 +15,6 @@ class sertif_bu extends Model
         'akte_peru',
         'ktp',
         'npwp_dir',
+        'bukti_trf'
     ];
 }

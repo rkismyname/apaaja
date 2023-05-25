@@ -4,7 +4,7 @@
     <div class="container grid px-6 mx-auto">
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="flex justify-between items-center mt-4">
-                <a href="{{ route('user.create') }}"
+                <a href="{{ route('layanan.create') }}"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Tambah +
                 </a>
@@ -15,38 +15,28 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">#</th>
-                            <th class="px-4 py-3">Nama</th>
-                            <th class="px-4 py-3">Email</th>
-                            <th class="px-4 py-3">Role</th>
+                            <th class="px-4 py-3">Kategori</th>
+                            <th class="px-4 py-3">Layanan</th>
+                            <th class="px-4 py-3">Tipe</th>
+                            <th class="px-4 py-3">Harga Jual</th>
+                            <th class="px-4 py-3">Harga Produksi</th>
+                            <th class="px-4 py-3">Harga Pokok</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @foreach ($users as $user)
+                        @foreach ($layanan as $layanan)
                             <tr class="text-gray-400 dark:text-gray-400">
-                                <td class="px-4 py-3">{{ $user->id }}</td>
-                                <td class="px-4 py-3">{{ $user->name }}</td>
-                                <td class="px-4 py-3">{{ $user->email }}</td>
-                                <td class="px-4 py-3">
-                                    @if ($user->role->name == 'admin')
-                                        <span class="bg-blue-500 text-black px-2 py-1 rounded-full">
-                                            {{ $user->role->name }}
-                                        </span>
-                                    @elseif ($user->role->name == 'user_perorangan')
-                                        <span class="bg-yellow-500 text-black px-2 py-1 rounded-full">
-                                            {{ $user->role->name }}
-                                        </span>
-                                    @elseif ($user->role->name == 'user_perusahaan')
-                                        <span class="bg-yellow-500 text-black px-2 py-1 rounded-full">
-                                            {{ $user->role->name }}
-                                        </span>
-                                    @else
-                                        {{ $user->role->name }}
-                                    @endif
-                                </td>
-                                <td class="px-4 py-3">
+                                <td class="px-4 py-3">{{ $layanan->layanan_id }}</td>
+                                <td class="px-4 py-3">{{ $layanan->kategori }}</td>
+                                <td class="px-4 py-3">{{ $layanan->layanan }}</td>
+                                <td class="px-4 py-3">{{ $layanan->tipe }}</td>
+                                <td class="px-4 py-3">{{ $layanan->hrg_jual }}</td>
+                                <td class="px-4 py-3">{{ $layanan->hrg_produksi }}</td>
+                                <td class="px-4 py-3">{{ $layanan->hrg_pokok }}</td>
+                                <td>
                                     <div class="flex items-center">
-                                        <a href="{{ route('user.edit', $user->id) }}"
+                                        <a href="{{ route('layanan.edit', $layanan->layanan_id) }}"
                                             class="mr-2 flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                             aria-label="Edit">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -55,9 +45,8 @@
                                                 </path>
                                             </svg>
                                         </a>
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST"
-                                            class="d-inline"
-                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        <form action="{{ route('layanan.destroy', $layanan->layanan_id) }}" method="POST"
+                                            class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

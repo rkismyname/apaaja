@@ -9,6 +9,7 @@ use App\Http\Controllers\Customer\PengajuanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ViewPengajuanController;
+use App\Http\Controllers\ProfileCustomerController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -25,19 +26,37 @@ use Illuminate\Auth\Events\Logout;
 //Routing Role : Admin
 Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
+        //Dashboard
         Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
-        Route::get('/user', [UserController::class, 'index']);
+        //Master Data
         Route::get('/admin/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('admin/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
+        //Pengajuan
         Route::get('/admin/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
         Route::get('/admin/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
+        //Layanan
         Route::get('/admin/layanan', [LayananController::class, 'index'])->name('layanan');
+        Route::get('/admin/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
+        Route::post('/admin/layanan', [LayananController::class, 'store'])->name('layanan.store');
+        Route::get('/admin/layanan/{layanan}/edit', [LayananController::class, 'edit'])->name('layanan.edit');
+        Route::put('/admin/layanan/{layanan}', [LayananController::class, 'update'])->name('layanan.update');
+        Route::delete('/admin/layanan/{layanan}', [LayananController::class, 'destroy'])->name('layanan.destroy');
+        Route::get('/admin/layanan/{kategori}', [LayananController::class, 'getLayananByKategori'])->name('layanan.get');
+        //User
+        Route::get('/user', [UserController::class, 'index'])->name('user.index');
+        Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('/user', [UserController::class, 'store'])->name('user.store');
+        Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
+        Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+        Route::get('/profileTk/edit/{id}', [ProfileCustomerController::class, 'profileTkEdit'])->name('profileTk.edit');
+        Route::put('/profileTk/{id}', [ProfileCustomerController::class, 'update'])->name('profileTk.update');
     });
 });
 
 //Routing Role : User
 Route::middleware('auth')->group(function () {
-    Route::middleware('role:user')->group(function () {
+    Route::middleware('role:user_perorangan,user_perusahaan')->group(function () {
         Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
         Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
         Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');

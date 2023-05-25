@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class sertif_tk extends Model
 {
     protected $table = 'sertif_tk';
+    // protected $primaryKey = 'id_tk';
 
     protected $fillable = [
         'ktp',
         'npwp',
         'ijazah',
-        'foto_terbaru'
+        'foto_terbaru',
+        'bukti_trf',
+        'id'
     ];
 }

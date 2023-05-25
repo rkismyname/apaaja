@@ -60,7 +60,6 @@
             </div>
         </div>
     </div>
-    {{-- <script type="module" src="{{ asset('js/auth/login.js') }}"></script> --}}
 </body>
 
 

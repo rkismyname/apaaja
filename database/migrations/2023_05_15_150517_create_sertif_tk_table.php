@@ -14,11 +14,12 @@ class CreateSertifTkTable extends Migration
     public function up()
     {
         Schema::create('sertif_tk', function (Blueprint $table) {
-            $table->id('id_tk');
+            $table->id('tk_id');
             $table->string('ktp');
             $table->string('npwp');
             $table->string('ijazah');
             $table->string('foto_terbaru');
+            $table->string('bukti_trf');
             $table->timestamps();
         });
     }

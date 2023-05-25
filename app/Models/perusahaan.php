@@ -10,6 +10,7 @@ class perusahaan extends Model
     use HasFactory;
 
     protected $table = 'perusahaan';
+    protected $primaryKey = 'id_company';
     protected $fillable = [
         'nama_perusahaan', 
         'nama_pj', 
@@ -17,6 +18,7 @@ class perusahaan extends Model
         'tlp_perusahaan',
         'email_perusahaan',
         'tlp_pj',
-        'alamat'
+        'alamat',
+        'id'
     ];
 }

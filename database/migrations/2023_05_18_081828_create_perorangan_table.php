@@ -16,10 +16,13 @@ class CreatePeroranganTable extends Migration
         Schema::create('perorangan', function (Blueprint $table) {
             $table->id('id_individual');
             $table->string('nama_perorangan');
+            $table->string('no_ktp');
+            // $table->string('');
             $table->date('tanggal_lahir');
             $table->string('alamat');
             $table->string('email');
             $table->string('no_telepon');
+            $table->string('no_npwp');
             $table->timestamps();
         });
     }

@@ -28,7 +28,10 @@ class LoginController extends Controller
             if (auth()->user()->isAdmin()) {
                 return redirect()->route('admin')->with('toast_success', 'Berhasil Login');
             }
-            else if (auth()->user()->isUser()) {
+            else if (auth()->user()->isUserTk()) {
+                return redirect()->route('customer')->with('toast_success', 'Berhasil Login');
+            }
+            else if (auth()->user()->isUserBu()) {
                 return redirect()->route('customer')->with('toast_success', 'Berhasil Login');
             }
         }
