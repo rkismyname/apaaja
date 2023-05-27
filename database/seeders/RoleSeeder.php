@@ -18,10 +18,7 @@ class RoleSeeder extends Seeder
             'name' => 'admin',
         ]);
         Role::create([
-            'name' => 'user_perorangan',
-        ]);
-        Role::create([
-            'name' => 'user_perusahaan',
+            'name' => 'user',
         ]);
     }
 }

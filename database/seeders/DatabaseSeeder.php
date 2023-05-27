@@ -26,14 +26,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Mark Ryden',
             'email' => 'markryden1@gmail.com',
             'password' => bcrypt('password'),
-            'role_id' => Role::where('name','user_perorangan')->first('id'),
-        ]);
-
-        \App\Models\User::factory()->create([
-            'name' => 'Andrew Isaac',
-            'email' => 'andrew1@gmail.com',
-            'password' => bcrypt('password'),
-            'role_id' => Role::where('name','user_perusahaan')->first('id'),
+            'role_id' => Role::where('name','user')->first('id'),
         ]);
 
         $this->call(LayananSeeder::class);

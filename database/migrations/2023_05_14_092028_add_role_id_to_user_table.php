@@ -14,7 +14,7 @@ class AddRoleIdToUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->after('password')->constrained();
+            $table->foreignId('role_id')->after('alamat')->constrained();
         });
     }
 

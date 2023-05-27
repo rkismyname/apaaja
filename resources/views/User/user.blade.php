@@ -32,11 +32,7 @@
                                         <span class="bg-blue-500 text-black px-2 py-1 rounded-full">
                                             {{ $user->role->name }}
                                         </span>
-                                    @elseif ($user->role->name == 'user_perorangan')
-                                        <span class="bg-yellow-500 text-black px-2 py-1 rounded-full">
-                                            {{ $user->role->name }}
-                                        </span>
-                                    @elseif ($user->role->name == 'user_perusahaan')
+                                    @elseif ($user->role->name == 'user')
                                         <span class="bg-yellow-500 text-black px-2 py-1 rounded-full">
                                             {{ $user->role->name }}
                                         </span>

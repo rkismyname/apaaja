@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<div>
     <div class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         @if ($errors->any())
             <div class="px-4 py-3 mb-2 bg-grey-100 text-red-800 rounded-lg">
@@ -11,13 +12,71 @@
                 </ul>
             </div>
         @endif
-
         @if (session('success'))
             <div class="px-4 py-3 mb-2 bg-grey-100 text-green-800 rounded-lg">
                 {{ session('success') }}
             </div>
         @endif
-
+        {{-- <form action="{{ route('layanan.update', $perorangan->id_individual) }}" method="POST"
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            @csrf
+            @method('PUT')
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Nama
+                </label>
+                <input type="text" name="name" id="name" value="{{ $perorangan->user->name }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_ktp">
+                    Nomor KTP
+                </label>
+                <input type="text" name="no_ktp" id="no_ktp" value="{{ $perorangan->no_ktp ? $perorangan->no_ktp : '-' }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">
+                    Tanggal Lahir
+                </label>
+                <input type="text" name="tanggal_lahir" id="tanggal_lahir" value="{{ $perorangan->tanggal_lahir ? $perorangan->tanggal_lahir : '-' }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat">
+                    Alamat
+                </label>
+                <input type="text" name="alamat" id="alamat" value="{{ $perorangan->alamat ? $perorangan->alamat : '-' }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    Email
+                </label>
+                <input type="text" name="email" id="email" value="{{ $perorangan->user->email }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_telepon">
+                    Nomor Telepon
+                </label>
+                <input type="text" name="no_telepon" id="no_telepon" value="{{ $perorangan->no_telepon ? $perorangan->no_telepon : '-'}}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_npwp">
+                    Nomor NPWP
+                </label>
+                <input type="text" name="no_npwp" id="no_npwp" value="{{ $perorangan->no_npwp ? $perorangan->no_npwp : '-' }}"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Submit
+                </button>
+            </div>
+        </form> --}}
         <form method="POST" action="{{ route('form_tk') }}" enctype="multipart/form-data">
             @csrf
             <!-- Field dan tombol submit lainnya -->
@@ -70,5 +129,6 @@
             </div>
         </form>
     </div>
+</div>
 
 @endsection

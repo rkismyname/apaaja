@@ -21,4 +21,8 @@ class perusahaan extends Model
         'alamat',
         'id'
     ];
+
+    public function User(){
+    return $this->belongsTo(User::class);
+    }
 }

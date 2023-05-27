@@ -13,8 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     const ADMIN_ROLE_ID = 1;
-    const USER_PERORANGAN_ROLE_ID = 2;
-    const USER_PERUSAHAAN_ROLE_ID = 3;
+    const USER_ROLE_ID = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +24,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'no_telepon',
+        'no_npwp',
+        'no_ktp',
+        'alamat',
+        'tanggal_lahir',
         'role_id',
     ];
 
@@ -57,12 +61,8 @@ class User extends Authenticatable
         return $this->role_id === self::ADMIN_ROLE_ID;
     }
 
-    public function isUserTk ()
+    public function isUser ()
     {
-        return $this->role_id === self::USER_PERORANGAN_ROLE_ID;
-    }
-    public function isUserBu ()
-    {
-        return $this->role_id === self::USER_PERUSAHAAN_ROLE_ID;
+        return $this->role_id === self::USER_ROLE_ID;
     }
 }

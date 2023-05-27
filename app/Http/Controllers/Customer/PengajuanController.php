@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\sertif_bu;
 use App\Models\sertif_tk;
+use App\Models\perorangan;
+use App\Models\perusahaan;
 use Illuminate\Http\Request;
 
 class PengajuanController extends Controller
@@ -65,6 +67,11 @@ class PengajuanController extends Controller
         // Tindakan selanjutnya setelah penyimpanan data, seperti mengirimkan notifikasi atau meredirect pengguna ke halaman yang sesuai
 
         return redirect()->back()->with('success', 'Data berhasil dikirim');
+    }
+
+    //Controller Form Untuk Master Data
+    public function dataDiri() {
+        
     }
 
     //UPLOAD SYARAT PENGAJUAN BADAN USAHA

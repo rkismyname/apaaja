@@ -64,26 +64,6 @@
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="***************" />
                             </label>
-                            <div class="mt-4">
-                                <span class="text-gray-700 dark:text-gray-400">Account Type</span>
-                                <div class="flex items-center mt-2">
-                                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                                        <input type="radio"
-                                            class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                            name="role_id" value="2" checked>
-                                        <span class="ml-2">Perusahaan</span>
-                                    </label>
-                                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                                        <input type="radio"
-                                            class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                            name="role_id" value="3">
-                                        <span class="ml-2">Perorangan</span>
-                                    </label>
-                                </div>
-                                @error('role_id')
-                                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                                @enderror
-                            </div>
                             <!-- You should use a button here, as the anchor is only used for the example  -->
                             <button type="submit"
                                 class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -97,23 +77,6 @@
                                 </a>
                             </p>
                         </form>
-                        <script>
-                            const jenisAkunSelect = document.getElementById('jenis_akun');
-                            const registerButton = document.getElementById('register_button');
-
-                            jenisAkunSelect.addEventListener('change', function() {
-                                if (jenisAkunSelect.value === 'perorangan') {
-                                    registerButton.dataset.roleId = '2';
-                                } else if (jenisAkunSelect.value === 'perusahaan') {
-                                    registerButton.dataset.roleId = '3';
-                                }
-                            });
-
-                            registerButton.addEventListener('click', function() {
-                                const roleId = registerButton.dataset.roleId;
-                                document.getElementById('role_id').value = roleId;
-                            });
-                        </script>
                     </div>
                 </div>
             </div>

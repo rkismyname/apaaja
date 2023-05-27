@@ -9,7 +9,7 @@ use App\Http\Controllers\Customer\PengajuanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ViewPengajuanController;
-use App\Http\Controllers\ProfileCustomerController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -49,19 +49,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
-        Route::get('/profileTk/edit/{id}', [ProfileCustomerController::class, 'profileTkEdit'])->name('profileTk.edit');
-        Route::put('/profileTk/{id}', [ProfileCustomerController::class, 'update'])->name('profileTk.update');
     });
-});
 
-//Routing Role : User
-Route::middleware('auth')->group(function () {
-    Route::middleware('role:user_perorangan,user_perusahaan')->group(function () {
-        Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
-        Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
-        Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');
-        Route::get('/perorangan', [PengajuanController::class, 'sertif_tk'])->name('form_tk');
-        Route::post('/perorangan', [PengajuanController::class, 'stored'])->name('syarat_tk');
+    //Routing Role : User
+    Route::middleware('auth')->group(function () {
+        Route::middleware('role:user')->group(function () {
+            Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
+            Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
+            Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');
+            Route::get('/perorangan', [PengajuanController::class, 'sertif_tk'])->name('form_tk');
+            Route::post('/perorangan', [PengajuanController::class, 'stored'])->name('syarat_tk');
+        });
     });
 });
 
@@ -75,3 +73,5 @@ Route::middleware('guest')->group(
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/profile/{user}/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
+Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');

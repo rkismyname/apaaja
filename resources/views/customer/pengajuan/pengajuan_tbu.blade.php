@@ -17,7 +17,9 @@
                 {{ session('success') }}
             </div>
         @endif
+        <form method="POST" action="">
 
+        </form>
         <form method="POST" action="{{ route('form_bu') }}" enctype="multipart/form-data">
             @csrf
             <!-- Field dan tombol submit lainnya -->

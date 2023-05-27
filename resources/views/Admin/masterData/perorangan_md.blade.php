@@ -17,15 +17,15 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @foreach ($perorangan as $perorangan)
+                        @foreach ($tenagaKerja as $user)
                             <tr class="text-gray-700 dark:text-gray-400">
+                                {{-- <td class="text-center">{{ $user->id }}</td> --}}
+                                <td class="text-center">{{ $user->name }}</td>
+                                <td class="text-center">{{ $user->alamat }}</td>
+                                <td class="text-center">{{ $user->no_telepon }}</td>
+                                <td>
 
-                                <td class="text-center">{{ $perorangan->id_individual }}</td>
-                                <td class="text-center">{{ $perorangan->alamat }}</td>
-                                <td class="text-center">{{ $perorangan->nama_perusahaan }}</td>
-                                <td class="text-center">{{ $perorangan->no_telepon }}</td>
-                                {{-- <td>{{ $perorangan->nama_perorangan}}</td>
-                            <td>{{ $perorangan->nama_perorangan}}</td> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -33,4 +33,14 @@
             </div>
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
 @endsection

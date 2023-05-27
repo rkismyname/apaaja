@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'name' => 'required|string',
             'email' => 'required|unique:users,email|email:rfc,dns',
             'password' => 'required|min:6|max:20|confirmed',
-            'role_id' => 'required|in:2,3'
+            'role_id' => 'required'
         ],[
             'name.required' => 'Nama harus diisi.',
             'email.required' => 'Email harus diisi.',
@@ -36,7 +36,7 @@ class RegisterController extends Controller
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
         $user->password = Hash::make($validateData['password']);
-        $user->role_id = $validateData['role_id'];
+        $user->role_id = 2 ;
         $user->save();
 
         $request->session()->flash('success', 'Registration Success');

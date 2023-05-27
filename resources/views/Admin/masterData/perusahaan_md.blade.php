@@ -17,16 +17,33 @@
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        @foreach ($badanUsaha as $perusahaan)
+                            <tr class="text-gray-700 dark:text-gray-400">
+                                {{-- <td class="text-center">{{ $user->id }}</td> --}}
+                                <td class="text-center">{{ $perusahaan->name }}</td>
+                                <td class="text-center">{{ $perusahaan->nama_perusahaan}}</td>
+                                <td class="text-center">{{ $perusahaan->nama_pj }}</td>
+                                <td class="text-center">{{ $perusahaan->bidang }}</td>
+                                <td class="text-center">{{ $perusahaan->tlp_perusahaan }}</td>
+                                <td>
 
-                        <tr>
-                            <td>
-
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(i + 0));
+            rows[i].insertBefore(td, rows[i].firstChild);
+        }
+    </script>
 @endsection
