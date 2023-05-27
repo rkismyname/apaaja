@@ -12,17 +12,12 @@ class perusahaan extends Model
     protected $table = 'perusahaan';
     protected $primaryKey = 'id_company';
     protected $fillable = [
-        'nama_perusahaan', 
-        'nama_pj', 
+        'nama_perusahaan',
+        'nama_pj',
         'bidang',
         'tlp_perusahaan',
         'email_perusahaan',
         'tlp_pj',
         'alamat',
-        'id'
     ];
-
-    public function User(){
-    return $this->belongsTo(User::class);
-    }
 }

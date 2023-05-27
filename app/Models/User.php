@@ -29,6 +29,7 @@ class User extends Authenticatable
         'no_ktp',
         'alamat',
         'tanggal_lahir',
+        'id_company',
         'role_id',
     ];
 
@@ -64,5 +65,9 @@ class User extends Authenticatable
     public function isUser ()
     {
         return $this->role_id === self::USER_ROLE_ID;
+    }
+
+    public function company () {
+        return $this->belongsTo(Perusahaan::class);
     }
 }

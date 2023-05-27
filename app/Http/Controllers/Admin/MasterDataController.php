@@ -20,8 +20,8 @@ class MasterDataController extends Controller
     
     public function showPerusahaan(Request $request)
     {
-        $badanUsaha = DB::table('perusahaan')
-        ->join('users', 'perusahaan.id', '=', 'users.id')
+        $badanUsaha = DB::table('users')
+        ->join('perusahaan', 'users.id_company', '=', 'users.id_company')
         ->select('users.name', 'perusahaan.nama_perusahaan', 'perusahaan.nama_pj', 'perusahaan.bidang', 'perusahaan.tlp_perusahaan')
         ->where('role_id', '=', 2)->get();
 
