@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+{{-- @dd($badanUsaha) --}}
     <div class="container grid px-6 mx-auto">
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="w-full overflow-x-auto">
@@ -21,7 +22,7 @@
                         @foreach ($badanUsaha as $perusahaan)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 {{-- <td class="text-center">{{ $user->id }}</td> --}}
-                                <td class="text-center">{{ $perusahaan->name }}</td>
+                                <td class="text-center">{{ $perusahaan->user_name }}</td>
                                 <td class="text-center">{{ $perusahaan->nama_perusahaan}}</td>
                                 <td class="text-center">{{ $perusahaan->nama_pj }}</td>
                                 <td class="text-center">{{ $perusahaan->bidang }}</td>

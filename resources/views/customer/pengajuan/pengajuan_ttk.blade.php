@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div>
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
     <div class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         @if ($errors->any())
             <div class="px-4 py-3 mb-2 bg-grey-100 text-red-800 rounded-lg">
@@ -17,68 +17,20 @@
                 {{ session('success') }}
             </div>
         @endif
-        {{-- <form action="{{ route('layanan.update', $perorangan->id_individual) }}" method="POST"
-            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            @csrf
-            @method('PUT')
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Nama
-                </label>
-                <input type="text" name="name" id="name" value="{{ $perorangan->user->name }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_ktp">
-                    Nomor KTP
-                </label>
-                <input type="text" name="no_ktp" id="no_ktp" value="{{ $perorangan->no_ktp ? $perorangan->no_ktp : '-' }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">
-                    Tanggal Lahir
-                </label>
-                <input type="text" name="tanggal_lahir" id="tanggal_lahir" value="{{ $perorangan->tanggal_lahir ? $perorangan->tanggal_lahir : '-' }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat">
-                    Alamat
-                </label>
-                <input type="text" name="alamat" id="alamat" value="{{ $perorangan->alamat ? $perorangan->alamat : '-' }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                    Email
-                </label>
-                <input type="text" name="email" id="email" value="{{ $perorangan->user->email }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_telepon">
-                    Nomor Telepon
-                </label>
-                <input type="text" name="no_telepon" id="no_telepon" value="{{ $perorangan->no_telepon ? $perorangan->no_telepon : '-'}}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="no_npwp">
-                    Nomor NPWP
-                </label>
-                <input type="text" name="no_npwp" id="no_npwp" value="{{ $perorangan->no_npwp ? $perorangan->no_npwp : '-' }}"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="flex items-center justify-between">
-                <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Submit
-                </button>
-            </div>
-        </form> --}}
         <form method="POST" action="{{ route('form_tk') }}" enctype="multipart/form-data">
             @csrf
+            <div class="mb-2">
+                <label class="text-gray-700 dark:text-gray-200" for="nama_perorangan">
+                    Nama Perorangan
+                </label>
+                <select name="nama_perorangan" id="nama_perorangan"
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                    <option value="">--Pilih Perorangan--</option>
+                </select>
+                @error('nama_perorangan')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
+            </div>
             <!-- Field dan tombol submit lainnya -->
             <!-- Field untuk unggahan file NIB -->
             <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -130,5 +82,32 @@
         </form>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const namaPeroranganSelect = document.getElementById('nama_perorangan');
 
+    // Fungsi untuk mengambil pilihan nama perorangan melalui permintaan AJAX
+    function getNamaPerorangan() {
+        fetch('/get-nama-perorangan')
+            .then(response => response.json())
+            .then(data => {
+                // Menghapus semua opsi nama perorangan sebelumnya
+                namaPeroranganSelect.innerHTML = '';
+
+                // Menambahkan opsi-opsi nama perorangan baru
+                data.forEach(namaPerorangan => {
+                    const option = document.createElement('option');
+                    option.value = namaPerorangan;
+                    option.text = namaPerorangan;
+                    namaPeroranganSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.log(error));
+    }
+
+    // Memanggil fungsi untuk mendapatkan nama perorangan saat halaman dimuat
+    getNamaPerorangan();
+});
+
+</script>
 @endsection

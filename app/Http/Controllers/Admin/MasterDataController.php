@@ -13,17 +13,18 @@ class MasterDataController extends Controller
 {
     public function showPerorangan(Request $request)
     {
-        $tenagaKerja = DB::table('users')
-                ->where('role_id','=', 2)->get();
-                return view('Admin.masterData.perorangan_md', compact('tenagaKerja'));
+        $tenagaKerja = DB::table('perorangan')
+            ->join('users', 'users.id', '=', 'perorangan.id')
+            ->where('users.role_id', '=', 2)->get();
+        return view('Admin.masterData.perorangan_md', compact('tenagaKerja'));
     }
-    
+
     public function showPerusahaan(Request $request)
     {
         $badanUsaha = DB::table('users')
-        ->join('perusahaan', 'users.id_company', '=', 'users.id_company')
-        ->select('users.name', 'perusahaan.nama_perusahaan', 'perusahaan.nama_pj', 'perusahaan.bidang', 'perusahaan.tlp_perusahaan')
-        ->where('role_id', '=', 2)->get();
+            ->join('perusahaan', 'users.id', '=', 'perusahaan.id')
+            ->select('users.name as user_name','perusahaan.nama_perusahaan', 'perusahaan.nama_pj', 'perusahaan.bidang', 'perusahaan.tlp_perusahaan')
+            ->where('users.role_id', '=', 2)->get();
 
         return view('Admin.masterData.perusahaan_md', compact('badanUsaha'));
     }

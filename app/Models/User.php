@@ -24,12 +24,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'no_telepon',
-        'no_npwp',
-        'no_ktp',
-        'alamat',
-        'tanggal_lahir',
-        'id_company',
         'role_id',
     ];
 
@@ -52,22 +46,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role ()
+    public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function isAdmin ()
+    public function isAdmin()
     {
         return $this->role_id === self::ADMIN_ROLE_ID;
     }
 
-    public function isUser ()
+    public function isUser()
     {
         return $this->role_id === self::USER_ROLE_ID;
     }
 
-    public function company () {
-        return $this->belongsTo(Perusahaan::class);
+    public function perusahaan()
+    {
+        return $this->hasMany(perusahaan::class);
+    }
+
+    public function perorangan()
+    {
+        return $this->hasMany(perorangan::class);
     }
 }

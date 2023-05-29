@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleIdToUserTable extends Migration
+class AddIdToTablePerorangan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddRoleIdToUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->after('password')->constrained();
+        Schema::table('perorangan', function (Blueprint $table) {
+            $table->foreignId('id')->after('alamat')->constrained('users', 'id');
         });
     }
 
@@ -25,9 +25,9 @@ class AddRoleIdToUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table){
-            $table->dropForeign(['role_id']);
-            $table->dropColumn(['role_id']);
+        Schema::table('perorangan', function (Blueprint $table){
+            $table->dropForeign(['id']);
+            $table->dropColumn(['id']);
         });
     }
 }

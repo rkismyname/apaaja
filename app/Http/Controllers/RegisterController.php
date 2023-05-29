@@ -31,12 +31,11 @@ class RegisterController extends Controller
             'password.max' => 'Password tidak boleh lebih dari 20 karakter',
             'password.confirmed' => 'Password tidak cocok',
         ]);
-
         $user = new User;
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
         $user->password = Hash::make($validateData['password']);
-        $user->role_id = 2 ;
+        $user->role_id = 2;
         $user->save();
 
         $request->session()->flash('success', 'Registration Success');

@@ -57,8 +57,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
             Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
             Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');
+            Route::get('/perorangan/data', [PengajuanController::class, 'dataDiri'])->name('data.tk');
+            Route::post('perorangan/data', [PengajuanController::class, 'storeData'])->name('dataTk.store');
             Route::get('/perorangan', [PengajuanController::class, 'sertif_tk'])->name('form_tk');
             Route::post('/perorangan', [PengajuanController::class, 'stored'])->name('syarat_tk');
+            Route::get('/customer/pengajuan/{kategori}', [PengajuanController::class, 'getPengajuanByKategori'])->name('pengajuan.get');
+            Route::get('/get-nama-perorangan', [PengajuanController::class, 'getNamaPerorangan'])->name('perorangan.get');
         });
     });
 });

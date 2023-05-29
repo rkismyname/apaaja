@@ -77,7 +77,7 @@ class LayananController extends Controller
     public function getLayananByKategori($kategori)
     {
         if ($kategori === 'Akuntan Publik') {
-            $layanan = ['Asset 1-10 Milyar', 'Asset 10-20 Milyar', 'Asset 50-100 Milyar', 'Asset 100-200 Milyar'];
+            $layanan = ['Asset 0-1 Milyar','Asset 1-10 Milyar', 'Asset 10-20 Milyar', 'Asset 50-100 Milyar', 'Asset 100-200 Milyar'];
         } elseif ($kategori === 'Audit SMK3') {
             $layanan = [
                 'Audit SMK3 64 KRITERIA (KONTRAKTOR)', 'Audit SMK3 122 KRITERIA (KONTRAKTOR)', 'Audit SMK3 166 KRITERIA (KONTRAKTOR)',

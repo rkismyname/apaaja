@@ -9,6 +9,7 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="text-center">#</th>
+                            <th class="text-center">Nam User</th>
                             {{-- <th class="text-center">Nama User</th> --}}
                             <th class="text-center">Nama Perorangan</th>
                             <th class="text-center">Alamat</th>
@@ -17,12 +18,13 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @foreach ($tenagaKerja as $user)
+                        @foreach ($tenagaKerja as $perorangan)
                             <tr class="text-gray-700 dark:text-gray-400">
-                                {{-- <td class="text-center">{{ $user->id }}</td> --}}
-                                <td class="text-center">{{ $user->name }}</td>
-                                <td class="text-center">{{ $user->alamat }}</td>
-                                <td class="text-center">{{ $user->no_telepon }}</td>
+                                {{-- <td class="text-center">{{ $user->id }}</td>  --}}
+                                <td class="text-center">{{ $perorangan->name }}</td>
+                                <td class="text-center">{{ $perorangan->nama_perorangan }}</td>
+                                <td class="text-center">{{ $perorangan->alamat }}</td>
+                                <td class="text-center">{{ $perorangan->no_telepon }}</td>
                                 <td>
 
                                 </td>

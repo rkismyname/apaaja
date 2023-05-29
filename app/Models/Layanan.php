@@ -19,4 +19,11 @@ class Layanan extends Model
         'hrg_pokok',
         'id'
     ];
+
+    public function perorangan() {
+        return $this->hasMany(perorangan::class);
+    }
+    public function perusahaan() {
+        return $this->hasMany(perusahaan::class);
+    }
 }

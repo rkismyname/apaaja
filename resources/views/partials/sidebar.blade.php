@@ -4,13 +4,15 @@
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
                     JuraganSertifikasi
                 </a>
-                <div x-data="{ isMasterDataMenuOpen: false, isPengajuanMenuOpen: false }" class="container">
+                <div x-data="{ isMasterDataMenuOpen: false, isPengajuanMenuOpen: false, activeItem: 'dashboard' }" class="container">
                     <ul class="mt-6">
                         @if (auth()->user()->isAdmin())
                             <li class="relative px-6 py-3">
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span x-show="activeItem === 'dashboard'"
+                                    class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                                <a @click="activeItem = 'dashboard'"
+                                    class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                                     href="/admin">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -25,7 +27,11 @@
                     </ul>
                     <ul>
                         <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            <span x-show="activeItem === 'user'"
+                                class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                            <a @click="activeItem = 'user'"
+                                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 href="/user">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,64 +141,63 @@
                                 <span class="ml-4">Layanan</span>
                             </a>
                         </li>
-                    @else
-                        <ul class="mt-6">
-                            <li class="relative px-6 py-3">
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                                    aria-hidden="true"></span>
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                                    href="/customer">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path
-                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                        </path>
-                                    </svg>
-                                    <span class="ml-4">Dashboard</span>
-                                </a>
-                            </li>
-                        </ul>
+                    </ul>
+                @else
+                    <ul class="mt-6">
                         <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="">
+                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                                href="/customer">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path
-                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
                                     </path>
                                 </svg>
-                                <span class="ml-4">Informasi</span>
+                                <span class="ml-4">Dashboard</span>
                             </a>
                         </li>
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="/perorangan">
-                                <svg xmlns="http://www.w3.org/2000/svg" class='w-5 h-5' aria-hidden="true"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                                <span class="ml-4">Pengajuan Sertifikasi Tenaga Kerja</span>
-                            </a>
-                        </li>
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="/perusahaan">
-                                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
-                                    </path>
-                                </svg>
-                                <span class="ml-4">Pengajuan Sertifikasi Badan Usaha</span>
-                            </a>
-                        </li>
+                    </ul>
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span class="ml-4">Informasi</span>
+                        </a>
+                    </li>
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="/perorangan/data">
+                            <svg xmlns="http://www.w3.org/2000/svg" class='w-5 h-5' aria-hidden="true"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span class="ml-4">Pengajuan Sertifikasi Tenaga Kerja</span>
+                        </a>
+                    </li>
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="/perusahaan">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span class="ml-4">Pengajuan Sertifikasi Badan Usaha</span>
+                        </a>
+                    </li>
                 </div>
                 @endif
             </div>
