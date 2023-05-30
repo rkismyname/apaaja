@@ -43,6 +43,7 @@ class PengajuanController extends Controller
 
         $validateData = $request->validate([
             // 'id' => auth()->user()->id,
+            'nama_perorangan' => 'required',
             'ktp' => 'required|file|mimes:pdf|max:2048',
             'npwp' => 'required|file|mimes:pdf|max:2048',
             'ijazah' => 'required|file|mimes:pdf|max:2048',
@@ -82,16 +83,20 @@ class PengajuanController extends Controller
             $request->file('foto_terbaru')->storeAs('public/tk/file_foto_terbaru', $foto_terbaruFile);
             $validatedData['foto_terbaru'] = $foto_terbaruFile;
         }
-        // Simpan data ke database
-        sertif_tk::create([
-            'id' => auth()->user()->id,
-            'ktp' => $validatedData['ktp'],
-            'npwp' => $validatedData['npwp'],
-            'ijazah' => $validatedData['ijazah'],
-            'foto_terbaru' => $validatedData['foto_terbaru']
-        ]);
+        $selectedNama = $request->input('nama_perorangan');
+        $namaPerorangan = DB::table('perorangan')
+            ->where('nama_perorangan', '=',  $selectedNama)
+            ->value('perorangan_id');
 
-        // Tindakan selanjutnya setelah penyimpanan data, seperti mengirimkan notifikasi atau meredirect pengguna ke halaman yang sesuai
+        $sertifTk = new sertif_tk();
+
+        $sertifTk->id = auth()->user()->id;
+        $sertifTk->ktp = $validatedData['ktp'];
+        $sertifTk->npwp = $validatedData['npwp'];
+        $sertifTk->ijazah = $validatedData['ijazah'];
+        $sertifTk->foto_terbaru = $validatedData['foto_terbaru'];
+        $sertifTk->perorangan_id = $namaPerorangan;
+        $sertifTk->save();
 
         return redirect()->back()->with('success', 'Data berhasil dikirim');
     }
@@ -115,14 +120,11 @@ class PengajuanController extends Controller
             'alamat' => 'required|string',
         ]);
 
-        // Create a new Perorangan instance and fill it with the validated data
         $perorangan = new Perorangan();
 
-        // Retrieve the selected layanan from the form
         $selectedKategori = $request->input('kategori');
         $selectedLayanan = $request->input('layanan');
 
-        // Find the Layanan instance based on the selected value
         $layanan = DB::table('layanan')
             ->where('layanan', '=',  $selectedLayanan)
             ->where('kategori', '=', $selectedKategori)
@@ -150,6 +152,18 @@ class PengajuanController extends Controller
     {
         $sertif_bu = sertif_bu::all();
         return view('customer.pengajuan.pengajuan_tbu', compact('sertif_bu'));
+    }
+
+    public function getNamaPerusahaan()
+    {
+        $userID = auth()->user()->id;
+
+        $namaPerusahaan = DB::table('perusahaan')
+            ->where('id', $userID)
+            ->pluck('nama_perusahaan')
+            ->toArray();
+
+        return response()->json($namaPerusahaan);
     }
 
     public function store(Request $request)
@@ -216,22 +230,72 @@ class PengajuanController extends Controller
         }
 
         // Simpan data ke database
-        sertif_bu::create([
-            'id' => auth()->user()->id,
-            'nib' => $validatedData['nib'],
-            'npwp_bu' => $validatedData['npwp_bu'],
-            'akte_pend' => $validatedData['akte_pend'],
-            'akte_peru' => $validatedData['akte_peru'],
-            'ktp' => $validatedData['ktp'],
-            'npwp_dir' => $validatedData['npwp_dir'],
-        ]);
+        $selectedNama = $request->input('nama_perusahaan');
 
+        // Find the Layanan instance based on the selected value
+        $namaPerorangan = DB::table('perusahaan')
+            ->where('nama_perusahaan', '=',  $selectedNama)
+            ->value('perusahaan_id');
 
-        // Tindakan selanjutnya setelah penyimpanan data, seperti mengirimkan notifikasi atau meredirect pengguna ke halaman yang sesuai
+        // Create a new instance of the sertif_tk model
+        $sertifBu = new sertif_bu();
+
+        $sertifBu->id = auth()->user()->id;
+        $sertifBu->nib = $validatedData['nib'];
+        $sertifBu->npwp_bu = $validatedData['npwp_bu'];
+        $sertifBu->akte_pend = $validatedData['akte_pend'];
+        $sertifBu->akte_peru = $validatedData['akte_peru'];
+        $sertifBu->ktp = $validatedData['keyType'];
+        $sertifBu->npwp_dir = $validatedData['akte_peru'];
+        $sertifBu->perorangan_id = $namaPerorangan;
+        $sertifBu->save();
 
         return redirect()->back()->with('success', 'Data berhasil dikirim');
     }
 
+    public function dataPerusahaan()
+    {
+        return view('customer.pengajuan.datapengajuan_bu');
+    }
+    public function storedData(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'kategori' => 'required',
+            'layanan' => 'required',
+            'nama_perusahaan' => 'required|string',
+            'nama_pj' => 'required|string',
+            'bidang' => 'required|string',
+            'tlp_perusahaan' => 'required|string',
+            'email_perusahaan' => 'required',
+            'tlp_pj' => 'required|string',
+            'alamat_perusahaan' => 'required|string'
+        ]);
+
+        $perusahaan = new perusahaan();
+
+        $selectedKategori = $request->input('kategori');
+        $selectedLayanan = $request->input('layanan');
+
+        $layanan = DB::table('layanan')
+            ->where('layanan', '=',  $selectedLayanan)
+            ->where('kategori', '=', $selectedKategori)
+            ->value('layanan_id');
+
+        $perusahaan->nama_perusahaan = $validatedData['nama_perusahaan'];
+        $perusahaan->nama_pj = $validatedData['nama_pj'];
+        $perusahaan->bidang = $validatedData['bidang'];
+        $perusahaan->tlp_perusahaan = $validatedData['tlp_perusahaan'];
+        $perusahaan->email_perusahaan = $validatedData['email_perusahaan'];
+        $perusahaan->tlp_pj = $validatedData['tlp_pj'];
+        $perusahaan->alamat_perusahaan = $validatedData['alamat_perusahaan'];
+        $perusahaan->id = auth()->user()->id;
+        $perusahaan->layanan_id = $layanan;
+
+        $perusahaan->save();
+
+        return redirect()->back()->with('success', 'Data berhasil dikirim');
+    }
     public function getPengajuanByKategori($kategori)
     {
         $layanan = [];

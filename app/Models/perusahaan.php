@@ -19,12 +19,17 @@ class perusahaan extends Model
         'email_perusahaan',
         'tlp_pj',
         'alamat',
-        'id'
+        'id',
+        'layanan_id'
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
         return $this->hasMany(User::class);
+    }
+
+    public function layanan() {
+        return $this->belongsTo(layanan::class);
     }
 }
 

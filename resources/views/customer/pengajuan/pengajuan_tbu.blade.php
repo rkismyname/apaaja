@@ -17,11 +17,21 @@
                 {{ session('success') }}
             </div>
         @endif
-        <form method="POST" action="">
-
         </form>
         <form method="POST" action="{{ route('form_bu') }}" enctype="multipart/form-data">
             @csrf
+            <div class="mb-2">
+                <label class="text-gray-700 dark:text-gray-200" for="nama_perusahaan">
+                    Nama Perusahaan
+                </label>
+                <select name="nama_perusahaan" id="nama_perusahaan"
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                    <option value="">--Pilih Perusahaan--</option>
+                </select>
+                @error('nama_perusahaan')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
+            </div>
             <!-- Field dan tombol submit lainnya -->
             <!-- Field untuk unggahan file NIB -->
             <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -92,5 +102,32 @@
             </div>
         </form>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const namaPerusahaanSelect = document.getElementById('nama_perusahaan');
+    
+        // Fungsi untuk mengambil pilihan nama perorangan melalui permintaan AJAX
+        function getNamaPerusahaan() {
+            fetch('/get-nama-perusahaan')
+                .then(response => response.json())
+                .then(data => {
+                    // Menghapus semua opsi nama perorangan sebelumnya
+                    namaPerusahaanSelect.innerHTML = '';
+    
+                    // Menambahkan opsi-opsi nama perorangan baru
+                    data.forEach(namaPerusahaan => {
+                        const option = document.createElement('option');
+                        option.value = namaPerusahaan;
+                        option.text = namaPerusahaan;
+                        namaPerusahaanSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.log(error));
+        }
+    
+        // Memanggil fungsi untuk mendapatkan nama perorangan saat halaman dimuat
+        getNamaPerusahaan();
+    });
+    
+    </script>
 @endsection
