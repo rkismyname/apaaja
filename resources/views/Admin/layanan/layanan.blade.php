@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container grid px-6 mx-auto">
+        @if (session('success'))
+            <div class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="flex justify-between items-center mt-4">
                 <a href="{{ route('layanan.create') }}"
@@ -25,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @foreach ($layanan as $layanan)
+                        @foreach ($layanans as $layanan)
                             <tr class="text-gray-400 dark:text-gray-400">
-                                <td class="px-4 py-3">{{ $layanan->layanan_id }}</td>
+                                {{-- <td class="px-4 py-3">{{ $layanan->layanan_id }}</td> --}}
                                 <td class="px-4 py-3">{{ $layanan->kategori }}</td>
                                 <td class="px-4 py-3">{{ $layanan->layanan }}</td>
                                 <td class="px-4 py-3">{{ $layanan->tipe }}</td>
@@ -46,7 +56,8 @@
                                             </svg>
                                         </a>
                                         <form action="{{ route('layanan.destroy', $layanan->layanan_id) }}" method="POST"
-                                            class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            class="d-inline"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -67,6 +78,32 @@
                     </tbody>
                 </table>
             </div>
+            <div class="flex justify-between items-center col-span-8 mt-4">
+                <nav aria-label="Table navigation">
+                    <ul
+                        class="inline-flex items-center bg-white divide-x divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                        {{ $layanans->links() }}
+                    </ul>
+                </nav>
+            </div>
+
         </div>
     </div>
+    <script>
+        var tables = document.getElementsByTagName('table');
+        var table = tables[tables.length - 1];
+        var rows = table.rows;
+        var startingNumber = 1;
+        var pageNumber = parseInt('{{ $layanans->currentPage() }}');
+        var itemsPerPage = parseInt('{{ $layanans->perPage() }}');
+        var currentNumber = (pageNumber - 1) * itemsPerPage + startingNumber;
+    
+        for (var i = 1, td; i < rows.length; i++) {
+            td = document.createElement('td');
+            td.appendChild(document.createTextNode(currentNumber));
+            rows[i].insertBefore(td, rows[i].firstChild);
+            currentNumber++;
+        }
+    </script>
+    
 @endsection

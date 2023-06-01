@@ -21,9 +21,9 @@ class Layanan extends Model
     ];
 
     public function perorangan() {
-        return $this->hasMany(perorangan::class);
+        return $this->hasMany(perorangan::class, 'layanan_id');
     }
     public function perusahaan() {
-        return $this->hasMany(perusahaan::class);
+        return $this->hasMany(perusahaan::class, 'layanan_id');
     }
 }

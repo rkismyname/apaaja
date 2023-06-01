@@ -48,6 +48,7 @@ class PengajuanController extends Controller
             'npwp' => 'required|file|mimes:pdf|max:2048',
             'ijazah' => 'required|file|mimes:pdf|max:2048',
             'foto_terbaru' => 'required|file|mimes:pdf|max:2048',
+            'bukti_trf' => 'required|file|mimes:pdf|max:2048'
         ], [
             'ktp.required' => 'WAJIB UPLOAD FILE KTP',
             'npwp.required' => 'WAJIB UPLOAD FILE NPWP',
@@ -83,6 +84,14 @@ class PengajuanController extends Controller
             $request->file('foto_terbaru')->storeAs('public/tk/file_foto_terbaru', $foto_terbaruFile);
             $validatedData['foto_terbaru'] = $foto_terbaruFile;
         }
+
+        //UPLOAD BUKTI TRF
+        if ($request->hasFile('bukti_trf')) {
+            $bukti_trfFile = $request->file('bukti_trf')->getClientOriginalName();
+            $request->file('bukti_trf')->storeAs('public/tk/file_bukti_trf', $bukti_trfFile);
+            $validatedData['bukti_trf'] = $foto_terbaruFile;
+        }
+
         $selectedNama = $request->input('nama_perorangan');
         $namaPerorangan = DB::table('perorangan')
             ->where('nama_perorangan', '=',  $selectedNama)
@@ -95,6 +104,7 @@ class PengajuanController extends Controller
         $sertifTk->npwp = $validatedData['npwp'];
         $sertifTk->ijazah = $validatedData['ijazah'];
         $sertifTk->foto_terbaru = $validatedData['foto_terbaru'];
+        $sertifTk->bukti_trf = $validatedData['bukti_trf'];
         $sertifTk->perorangan_id = $namaPerorangan;
         $sertifTk->save();
 
@@ -176,6 +186,7 @@ class PengajuanController extends Controller
             'akte_peru' => 'required|file|mimes:pdf|max:2048',
             'ktp' => 'required|file|mimes:pdf|max:2048',
             'npwp_dir' => 'required|file|mimes:pdf|max:2048',
+            'bukti_trf' => 'required|file|mimes:pdf|max:2048'
             // 'id' => auth()->user()->id
         ], [
             'nib.required' => 'Wajib mengunggah file NIB',
@@ -229,6 +240,13 @@ class PengajuanController extends Controller
             $validatedData['npwp_dir'] = $npwpDirFile;
         }
 
+        // file bukti transfer
+        if ($request->hasFile('bukti_trf')) {
+            $buktiTrfFile = $request->file('bukti_trf')->getClientOriginalName();
+            $request->file('bukti_trf')->storeAs('public/bu/file_bukti_trf', $buktiTrfFile);
+            $validatedData['bukti_trf'] = $buktiTrfFile;
+        }
+
         // Simpan data ke database
         $selectedNama = $request->input('nama_perusahaan');
 
@@ -247,6 +265,7 @@ class PengajuanController extends Controller
         $sertifBu->akte_peru = $validatedData['akte_peru'];
         $sertifBu->ktp = $validatedData['keyType'];
         $sertifBu->npwp_dir = $validatedData['akte_peru'];
+        $sertifBu->bukti_trf = $validatedData['bukti_trf'];
         $sertifBu->perorangan_id = $namaPerorangan;
         $sertifBu->save();
 

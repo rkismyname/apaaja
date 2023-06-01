@@ -27,6 +27,7 @@
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
+                @if (auth()->user()->isUser())
                 <div class="mb-4">
                     <label class="text-gray-700 dark:text-gray-200" for="current_password">
                         Current Password
@@ -54,6 +55,7 @@
                     <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Konfirmasi Password Baru"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                 </div>
+                @endif
             </div>
             <div class="flex items-center justify-between">
                 @if (auth()->user()->isAdmin())

@@ -93,41 +93,54 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
+            <!-- Field Upload file bukti transfer-->
+            <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <label class="block text-sm" for="bukti_trf">File Bukti Transfer (PDF)</label>
+                <input
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    type="file" name="bukti_trf" id="bukti_trf" accept=".pdf">
+                @error('bukti_trf')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
             <!-- Tombol submit dan lainnya -->
             <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
                 <button type="submit"
                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                     Submit
                 </button>
+                <a href="{{ route('data.bu') }}"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Back
+                </a>
             </div>
         </form>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        const namaPerusahaanSelect = document.getElementById('nama_perusahaan');
-    
-        // Fungsi untuk mengambil pilihan nama perorangan melalui permintaan AJAX
-        function getNamaPerusahaan() {
-            fetch('/get-nama-perusahaan')
-                .then(response => response.json())
-                .then(data => {
-                    // Menghapus semua opsi nama perorangan sebelumnya
-                    namaPerusahaanSelect.innerHTML = '';
-    
-                    // Menambahkan opsi-opsi nama perorangan baru
-                    data.forEach(namaPerusahaan => {
-                        const option = document.createElement('option');
-                        option.value = namaPerusahaan;
-                        option.text = namaPerusahaan;
-                        namaPerusahaanSelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.log(error));
-        }
-    
-        // Memanggil fungsi untuk mendapatkan nama perorangan saat halaman dimuat
-        getNamaPerusahaan();
-    });
-    
+            const namaPerusahaanSelect = document.getElementById('nama_perusahaan');
+
+            // Fungsi untuk mengambil pilihan nama perorangan melalui permintaan AJAX
+            function getNamaPerusahaan() {
+                fetch('/get-nama-perusahaan')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Menghapus semua opsi nama perorangan sebelumnya
+                        namaPerusahaanSelect.innerHTML = '';
+
+                        // Menambahkan opsi-opsi nama perorangan baru
+                        data.forEach(namaPerusahaan => {
+                            const option = document.createElement('option');
+                            option.value = namaPerusahaan;
+                            option.text = namaPerusahaan;
+                            namaPerusahaanSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            // Memanggil fungsi untuk mendapatkan nama perorangan saat halaman dimuat
+            getNamaPerusahaan();
+        });
     </script>
 @endsection

@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
         //Pengajuan
         Route::get('/admin/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
         Route::get('/admin/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
+        Route::get('/admin/detail-pengajuan/{id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
         //Layanan
         Route::get('/admin/layanan', [LayananController::class, 'index'])->name('layanan');
         Route::get('/admin/layanan/create', [LayananController::class, 'create'])->name('layanan.create');

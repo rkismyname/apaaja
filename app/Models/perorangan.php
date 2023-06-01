@@ -21,12 +21,18 @@ class perorangan extends Model
         'layanan_id'
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
-        return $this->hasMany(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
     }
 
-    public function layanan() {
-        return $this->belongsTo(Layanan::class);
+    public function layanan()
+    {
+        return $this->belongsTo(Layanan::class, 'layanan_id');
+    }
+
+    public function sertifTk()
+    {
+        return $this->hasOne(SertifTk::class, 'perorangan_id');
     }
 }

@@ -16,6 +16,12 @@ class sertif_tk extends Model
         'ijazah',
         'foto_terbaru',
         'bukti_trf',
-        'id'
+        'id',
+        'perorangan_id'
     ];
+
+    public function perorangan () {
+        return $this->belongsTo(perorangan::class, 'perorangan_id');
+    }
 }
+

@@ -12,8 +12,9 @@ class LayananController extends Controller
 {
     public function index()
     {
-        $layanan = layanan::all();
-        return view('Admin.layanan.layanan', compact('layanan'));
+        $layanans = Layanan::paginate(5);
+        // $layanan = layanan::all();
+        return view('Admin.layanan.layanan', compact('layanans'));
     }
 
     public function create()
@@ -68,16 +69,24 @@ class LayananController extends Controller
 
     public function destroy($id)
     {
-        $layanan = Layanan::where('layanan_id', $id)->firstOrFail();
+        $layanan = Layanan::findOrFail($id);
+
+        if ($layanan->perorangan()->exists()) {
+            return redirect()->route('layanan')->with('error', 'Layanan sedang dalam proses pengajuan.');
+        } elseif ($layanan->perusahaan()->exists()){
+            return redirect()->route('layanan')->with('error', 'Layanan sedang dalam proses pengajuan.');
+        }
+
         $layanan->delete();
 
         return redirect()->route('layanan')->with('success', 'Layanan deleted successfully.');
     }
 
+
     public function getLayananByKategori($kategori)
     {
         if ($kategori === 'Akuntan Publik') {
-            $layanan = ['Asset 0-1 Milyar','Asset 1-10 Milyar', 'Asset 10-20 Milyar', 'Asset 50-100 Milyar', 'Asset 100-200 Milyar'];
+            $layanan = ['Asset 0-1 Milyar', 'Asset 1-10 Milyar', 'Asset 10-20 Milyar', 'Asset 50-100 Milyar', 'Asset 100-200 Milyar'];
         } elseif ($kategori === 'Audit SMK3') {
             $layanan = [
                 'Audit SMK3 64 KRITERIA (KONTRAKTOR)', 'Audit SMK3 122 KRITERIA (KONTRAKTOR)', 'Audit SMK3 166 KRITERIA (KONTRAKTOR)',
