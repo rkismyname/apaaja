@@ -18,16 +18,16 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach ($peroranganAdmin as $index => $admin)
+                    @foreach ($peroranganAdmin as $admin)
                         <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="text-center">{{ $index + 1 }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $admin->name }}</td>
                             <td class="text-center">{{ $admin->nama_perorangan }}</td>
                             <td class="text-center">{{ $admin->kategori }}</td>
                             <td class="text-center">{{ $admin->layanan }}</td>
                             <td class="text-center">{{ $admin->bukti_trf }}</td>
                             <td>
-                                <a href="{{ route('detail_pengajuan', ['id' => $admin->unique_id]) }}" class="text-blue-500 hover:text-blue-700">Lihat Detail</a>
+                                <a href="/pengajuan/detail-pengajuan/{{$admin->perorangan_id}}" class="btn btn-warning">Lihat Detail</a>
                             </td>
                         </tr>
                     @endforeach
@@ -36,14 +36,4 @@
         </div>
     </div>
 </div>
-{{-- <script>
-    var tables = document.getElementsByTagName('table');
-    var table = tables[tables.length - 1];
-    var rows = table.rows;
-    for (var i = 1, td; i < rows.length; i++) {
-        td = document.createElement('td');
-        td.appendChild(document.createTextNode(i + 0));
-        rows[i].insertBefore(td, rows[i].firstChild);
-    }
-</script> --}}
 @endsection

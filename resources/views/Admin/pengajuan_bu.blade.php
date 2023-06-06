@@ -20,14 +20,14 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($perusahaanAdmin as $admin)
                         <tr class="text-gray-700 dark:text-gray-400">
-                            {{-- <td class="text-center">{{ $user->id }}</td>  --}}
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $admin->name }}</td>
                             <td class="text-center">{{ $admin->nama_perusahaan }}</td>
                             <td class="text-center">{{ $admin->kategori }}</td>
                             <td class="text-center">{{ $admin->layanan }}</td>
                             <td class="text-center">{{ $admin->bukti_trf }}</td>
                             <td>
-
+                                <a href="/pengajuan/details-pengajuan/{{$admin->perusahaan_id}}" class="btn btn-warning">Lihat Detail</a>
                             </td>
                         </tr>
                     @endforeach
@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-<script>
+{{-- <script>
     var tables = document.getElementsByTagName('table');
     var table = tables[tables.length - 1];
     var rows = table.rows;
@@ -45,5 +45,5 @@
         td.appendChild(document.createTextNode(i + 0));
         rows[i].insertBefore(td, rows[i].firstChild);
     }
-</script>
+</script> --}}
 @endsection

@@ -20,7 +20,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         @foreach ($tenagaKerja as $perorangan)
                             <tr class="text-gray-700 dark:text-gray-400">
-                                {{-- <td class="text-center">{{ $user->id }}</td>  --}}
+                                <td class="text-center">{{ $loop->iteration }}</td> 
                                 <td class="text-center">{{ $perorangan->name }}</td>
                                 <td class="text-center">{{ $perorangan->nama_perorangan }}</td>
                                 <td class="text-center">{{ $perorangan->alamat }}</td>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <script>
+    {{-- <script>
         var tables = document.getElementsByTagName('table');
         var table = tables[tables.length - 1];
         var rows = table.rows;
@@ -44,5 +44,5 @@
             td.appendChild(document.createTextNode(i + 0));
             rows[i].insertBefore(td, rows[i].firstChild);
         }
-    </script>
+    </script> --}}
 @endsection

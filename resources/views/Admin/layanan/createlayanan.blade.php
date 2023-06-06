@@ -128,7 +128,7 @@
 
             // Fungsi untuk mengambil pilihan layanan berdasarkan kategori melalui permintaan AJAX
             function getLayananByKategori(kategori) {
-                fetch(`/admin/layanan/${kategori}`)
+                fetch(`/layanan/${kategori}`)
                     .then(response => response.json())
                     .then(data => {
                         // Menghapus semua opsi layanan sebelumnya

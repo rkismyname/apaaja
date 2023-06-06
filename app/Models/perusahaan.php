@@ -24,12 +24,17 @@ class perusahaan extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'id');
+        // return $this->hasMany(User::class);
     }
 
     public function layanan() {
-        return $this->belongsTo(layanan::class);
+        return $this->belongsTo(layanan::class, 'layanan_id');
+    }
+
+    public function sertif_bu()
+    {
+        return $this->hasOne(sertif_bu::class, 'perusahaan_id');
     }
 }
 

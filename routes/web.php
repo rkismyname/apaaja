@@ -29,20 +29,21 @@ Route::middleware('auth')->group(function () {
         //Dashboard
         Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
         //Master Data
-        Route::get('/admin/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
-        Route::get('admin/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
+        Route::get('/md/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
+        Route::get('/md/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
         //Pengajuan
-        Route::get('/admin/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
-        Route::get('/admin/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
-        Route::get('/admin/detail-pengajuan/{id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
+        Route::get('/pengajuan/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
+        Route::get('/pengajuan/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
+        Route::get('/pengajuan/detail-pengajuan/{perorangan_id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
+        Route::get('/pengajuan/details-pengajuan/{perusahaan_id}', [ViewPengajuanController::class, 'detailsPengajuan'])->name('details_pengajuan');
         //Layanan
-        Route::get('/admin/layanan', [LayananController::class, 'index'])->name('layanan');
-        Route::get('/admin/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
-        Route::post('/admin/layanan', [LayananController::class, 'store'])->name('layanan.store');
-        Route::get('/admin/layanan/{layanan}/edit', [LayananController::class, 'edit'])->name('layanan.edit');
-        Route::put('/admin/layanan/{layanan}', [LayananController::class, 'update'])->name('layanan.update');
-        Route::delete('/admin/layanan/{layanan}', [LayananController::class, 'destroy'])->name('layanan.destroy');
-        Route::get('/admin/layanan/{kategori}', [LayananController::class, 'getLayananByKategori'])->name('layanan.get');
+        Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
+        Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
+        Route::post('/layanan', [LayananController::class, 'store'])->name('layanan.store');
+        Route::get('/layanan/{layanan}/edit', [LayananController::class, 'edit'])->name('layanan.edit');
+        Route::put('/layanan/{layanan}', [LayananController::class, 'update'])->name('layanan.update');
+        Route::delete('/layanan/{layanan}', [LayananController::class, 'destroy'])->name('layanan.destroy');
+        Route::get('/layanan/{kategori}', [LayananController::class, 'getLayananByKategori'])->name('layanan.get');
         //User
         Route::get('/user', [UserController::class, 'index'])->name('user.index');
         Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
@@ -57,12 +58,22 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:user')->group(function () {
             Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
             //Pengajuan Badan Usaha
+            Route::get('/perusahaan/list', [PengajuanController::class, 'listPerusahaan'])->name('list.bu');
+            Route::get('/perusahaan/list/{perusahaan_id}/edit', [PengajuanController::class, 'editPerusahaan'])->name('list.bu.edit');
+            Route::put('/perusahaan/list/{perusahaan_id}', [PengajuanController::class, 'updatePerusahaan'])->name('list.bu.update');
+            Route::delete('/perusahaan/list/{perusahaan_id}', [PengajuanController::class, 'deletePerusahaan'])->name('list.bu.delete');
+            //#########
             Route::get('/perusahaan/data', [PengajuanController::class, 'dataPerusahaan'])->name('data.bu');
             Route::post('/perusahaan/data', [PengajuanController::class, 'storedData'])->name('dataBu.store');
             Route::get('/perusahaan', [PengajuanController::class, 'sertif_bu'])->name('form_bu');
             Route::post('/perusahaan', [PengajuanController::class, 'store'])->name('syarat_bu');
             Route::get('/get-nama-perusahaan', [PengajuanController::class, 'getNamaPerusahaan'])->name('perusahaan.get');
             //Pengajuan Tenaga Kerja
+            Route::get('/perorangan/list', [PengajuanController::class, 'listPerorangan'])->name('list.tk');
+            Route::get('/perorangan/list/{perorangan_id}/edit', [PengajuanController::class, 'editPerorangan'])->name('list.tk.edit');
+            Route::put('/perorangan/list/{perorangan_id}', [PengajuanController::class, 'updatePerorangan'])->name('list.tk.update');
+            Route::delete('/perorangan/list/{perorangan_id}', [PengajuanController::class, 'deletePerorangan'])->name('list.tk.delete');
+            //#########
             Route::get('/perorangan/data', [PengajuanController::class, 'dataDiri'])->name('data.tk');
             Route::post('perorangan/data', [PengajuanController::class, 'storeData'])->name('dataTk.store');
             Route::get('/perorangan', [PengajuanController::class, 'sertif_tk'])->name('form_tk');

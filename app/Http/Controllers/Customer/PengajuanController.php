@@ -23,6 +23,62 @@ class PengajuanController extends Controller
         $sertif_tk = sertif_tk::all();
         return view('customer.pengajuan.pengajuan_ttk', compact('sertif_tk'));
     }
+    // CRUD PENGAJUAN TENAGA KERJA
+    public function listPerorangan()
+    {
+        $userId = Auth::id();
+        $listPerorangan = Perorangan::where('id', $userId)->get();
+        return view('customer.pengajuan.listpengajuan_tk', compact('listPerorangan'));
+    }
+
+    public function editPerorangan($perorangan_id) {
+        $perorangan = Perorangan::findOrFail($perorangan_id);
+        
+        return view('customer.pengajuan.editList_tk', compact('perorangan'));
+    }
+    public function updatePerorangan(Request $request, $perorangan_id)
+    {
+        $data = $request->validate([
+            'nama_perorangan' => 'required',
+            'alamat' => 'required',
+            'tanggal_lahir' => 'required',
+            'no_ktp' => 'required',
+            'no_npwp' => 'required',
+            'no_telepon' => 'required',
+            'kategori' => 'required',
+            'layanan' => 'required',
+        ]);
+
+        $selectedKategori = $request->input('kategori');
+        $selectedLayanan = $request->input('layanan');
+
+        $layanan = Layanan::where('kategori', $selectedKategori)
+            ->where('layanan', $selectedLayanan)
+            ->first();
+        $layananId = $layanan->layanan_id;
+        $perorangan = Perorangan::findOrFail($perorangan_id);
+        $perorangan->nama_perorangan = $data['nama_perorangan'];
+        $perorangan->alamat = $data['alamat'];
+        $perorangan->tanggal_lahir = $data['tanggal_lahir'];
+        $perorangan->no_ktp = $data['no_ktp'];
+        $perorangan->no_npwp = $data['no_npwp'];
+        $perorangan->no_telepon = $data['no_telepon'];
+        $perorangan->layanan_id = $layananId;
+
+        $perorangan->save();
+
+        return redirect()->route('list.tk')->with('success', 'Data perorangan berhasil diperbarui.');
+    }
+
+
+    public function deletePerorangan($perorangan_id)
+    {
+        $perorangan = Perorangan::findOrFail($perorangan_id);
+        $perorangan->sertif_tk()->delete();
+        $perorangan->delete();
+
+        return redirect()->route('list.tk')->with('success', 'Data perorangan berhasil dihapus.');
+    }
 
     //Selected Nama Perorangan
     public function getNamaPerorangan()
@@ -53,7 +109,7 @@ class PengajuanController extends Controller
             'ktp.required' => 'WAJIB UPLOAD FILE KTP',
             'npwp.required' => 'WAJIB UPLOAD FILE NPWP',
             'ijazah.required' => 'WAJIB UPLOAD FILE IJAZAH',
-            'foto_terbaru.required' => 'WAJIB UPLOAD FILE TERBARU',
+            'foto_terbaru.required' => 'WAJIB UPLOAD FILE FOTO TERBARU',
             '*.mimes' => 'FILE YANG DIUPLOAD HARUS BERFORMAT PDF',
         ]);
 
@@ -164,6 +220,64 @@ class PengajuanController extends Controller
         return view('customer.pengajuan.pengajuan_tbu', compact('sertif_bu'));
     }
 
+    public function listPerusahaan()
+    {
+        $userId = Auth::id();
+        $listPerusahaan = Perusahaan::where('id', $userId)->get();
+        return view('customer.pengajuan.listpengajuan_bu', compact('listPerusahaan'));
+    }
+
+    public function editPerusahaan($perusahaan_id) {
+        $perusahaan = Perusahaan::findOrFail($perusahaan_id);
+        
+        return view('customer.pengajuan.editList_bu', compact('perusahaan'));
+    }
+    public function updatePerusahaan(Request $request, $perusahaan_id)
+    {
+        $data = $request->validate([
+            'nama_perorangan' => 'required',
+            'nama_pj' => 'required',
+            'bidang' => 'required',
+            'tlp_perusahaan' => 'required',
+            'email_perusahaan' => 'required',
+            'tlp_pj' => 'required',
+            'alamat_perusahaan' => 'required',
+            'kategori' => 'required',
+            'layanan' => 'required',
+        ]);
+
+        $selectedKategori = $request->input('kategori');
+        $selectedLayanan = $request->input('layanan');
+
+        $layanan = Layanan::where('kategori', $selectedKategori)
+            ->where('layanan', $selectedLayanan)
+            ->first();
+        $layananId = $layanan->layanan_id;
+        $perusahaan = Perusahaan::findOrFail($perusahaan_id);
+        $perusahaan->nama_perusahaan = $data['nama_perusahaan'];
+        $perusahaan->nama_pj = $data['nama_pj'];
+        $perusahaan->bidang = $data['bidang'];
+        $perusahaan->tlp_perusahaan = $data['tlp_perusahaan'];
+        $perusahaan->email_perusahaan = $data['email_perusahaan'];
+        $perusahaan->tlp_pj = $data['tlp_pj'];
+        $perusahaan->alamat_perusahaan = $data['alamat_perusahaan'];
+        $perusahaan->layanan_id = $layananId;
+
+        $perusahaan->save();
+
+        return redirect()->route('list.bu')->with('success', 'Data perusahaan berhasil diperbarui.');
+    }
+
+
+    public function deletePerusahaan($perusahaan_id)
+    {
+        $perusahaan = Perusahaan::findOrFail($perusahaan_id);
+        $perusahaan->sertif_bu()->delete();
+        $perusahaan->delete();
+
+        return redirect()->route('list.bu')->with('success', 'Data perusahaan berhasil dihapus.');
+    }
+
     public function getNamaPerusahaan()
     {
         $userID = auth()->user()->id;
@@ -251,7 +365,7 @@ class PengajuanController extends Controller
         $selectedNama = $request->input('nama_perusahaan');
 
         // Find the Layanan instance based on the selected value
-        $namaPerorangan = DB::table('perusahaan')
+        $namaPerusahaan = DB::table('perusahaan')
             ->where('nama_perusahaan', '=',  $selectedNama)
             ->value('perusahaan_id');
 
@@ -263,10 +377,10 @@ class PengajuanController extends Controller
         $sertifBu->npwp_bu = $validatedData['npwp_bu'];
         $sertifBu->akte_pend = $validatedData['akte_pend'];
         $sertifBu->akte_peru = $validatedData['akte_peru'];
-        $sertifBu->ktp = $validatedData['keyType'];
+        $sertifBu->ktp = $validatedData['ktp'];
         $sertifBu->npwp_dir = $validatedData['akte_peru'];
         $sertifBu->bukti_trf = $validatedData['bukti_trf'];
-        $sertifBu->perorangan_id = $namaPerorangan;
+        $sertifBu->perusahaan_id = $namaPerusahaan;
         $sertifBu->save();
 
         return redirect()->back()->with('success', 'Data berhasil dikirim');

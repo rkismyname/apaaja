@@ -2,21 +2,14 @@
 
 @section('content')
     <div class="container grid px-6 mx-auto">
-        @if (session('success'))
-            <div class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg">
-                {{ session('error') }}
-            </div>
-        @endif
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="flex justify-between items-center mt-4">
-                <a href="{{ route('layanan.create') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Tambah +
+                <a href="{{ route('data.bu') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Tambah Pengajuan +
+                </a>
+                <a href="{{ route('form_bu') }}"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Isi Berkas Pengajuan
                 </a>
             </div>
             <div class="w-full overflow-x-auto mt-4">
@@ -25,28 +18,34 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">#</th>
+                            <th class="px-4 py-3">Nama Perusahaan</th>
+                            <th class="px-4 py-3">Nama PJ/Direktur</th>
+                            <th class="px-4 py-3">Bidang</th>
+                            <th class="px-4 py-3">Telepon Perusahaan</th>
+                            <th class="px-4 py-3">Email Perusahaan</th>
+                            <th class="px-4 py-3">No Telepon Direktur</th>
+                            <th class="px-4 py-3">Alamat Perusahaan</th>
                             <th class="px-4 py-3">Kategori</th>
                             <th class="px-4 py-3">Layanan</th>
-                            <th class="px-4 py-3">Tipe</th>
-                            <th class="px-4 py-3">Harga Jual</th>
-                            <th class="px-4 py-3">Harga Produksi</th>
-                            <th class="px-4 py-3">Harga Pokok</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                        @foreach ($layanans as $layanan)
+                        @foreach ($listPerusahaan as $perusahaan)
                             <tr class="text-gray-400 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3">{{ $layanan->kategori }}</td>
-                                <td class="px-4 py-3">{{ $layanan->layanan }}</td>
-                                <td class="px-4 py-3">{{ $layanan->tipe }}</td>
-                                <td class="px-4 py-3">{{ $layanan->hrg_jual }}</td>
-                                <td class="px-4 py-3">{{ $layanan->hrg_produksi }}</td>
-                                <td class="px-4 py-3">{{ $layanan->hrg_pokok }}</td>
-                                <td>
+                                <td class="px-4 py-3">{{ $perusahaan->nama_perusahaan }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->nama_pj }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->bidang }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->tlp_perusahaan }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->email_perusahaan }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->tlp_pj }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->alamat_perusahaan }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->layanan->kategori }}</td>
+                                <td class="px-4 py-3">{{ $perusahaan->layanan->layanan }}</td>
+                                <td class="px-4 py-3">
                                     <div class="flex items-center">
-                                        <a href="{{ route('layanan.edit', $layanan->layanan_id) }}"
+                                        <a href="/perusahaan/list/{{ $perusahaan->perusahaan_id }}/edit"
                                             class="mr-2 flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                             aria-label="Edit">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -55,7 +54,7 @@
                                                 </path>
                                             </svg>
                                         </a>
-                                        <form action="{{ route('layanan.destroy', $layanan->layanan_id) }}" method="POST"
+                                        <form action="/perusahaan/list/{{ $perusahaan->perusahaan_id }}" method="POST"
                                             class="d-inline"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @csrf
@@ -78,32 +77,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="flex justify-between items-center col-span-8 mt-4">
-                <nav aria-label="Table navigation">
-                    <ul
-                        class="inline-flex items-center bg-white divide-x divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                        {{ $layanans->links() }}
-                    </ul>
-                </nav>
-            </div>
-
         </div>
     </div>
-    {{-- <script>
-        var tables = document.getElementsByTagName('table');
-        var table = tables[tables.length - 1];
-        var rows = table.rows;
-        var startingNumber = 1;
-        var pageNumber = parseInt('{{ $layanans->currentPage() }}');
-        var itemsPerPage = parseInt('{{ $layanans->perPage() }}');
-        var currentNumber = (pageNumber - 1) * itemsPerPage + startingNumber;
-    
-        for (var i = 1, td; i < rows.length; i++) {
-            td = document.createElement('td');
-            td.appendChild(document.createTextNode(currentNumber));
-            rows[i].insertBefore(td, rows[i].firstChild);
-            currentNumber++;
-        }
-    </script> --}}
-    
 @endsection

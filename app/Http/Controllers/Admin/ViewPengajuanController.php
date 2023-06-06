@@ -13,11 +13,12 @@ class ViewPengajuanController extends Controller
     public function peroranganAdmin() {
         $peroranganSertif = sertif_tk::all();
         $peroranganAdmin = DB::table('users')
-        ->selectRaw('UUID() AS unique_id, users.name, perorangan.nama_perorangan, sertif_tk.bukti_trf, layanan.kategori, layanan.layanan')
-        ->join('perorangan', 'users.id', '=', 'perorangan.id')
-        ->join('sertif_tk', 'perorangan.perorangan_id', '=', 'sertif_tk.perorangan_id')
-        ->join('layanan', 'perorangan.layanan_id', '=', 'layanan.layanan_id')
-        ->where('users.role_id', '=', 2)
+        ->leftJoin('perorangan', 'users.id', '=', 'perorangan.id')
+        ->leftJoin('sertif_tk', 'perorangan.perorangan_id', '=', 'sertif_tk.perorangan_id')
+        ->leftJoin('layanan', 'perorangan.layanan_id', '=', 'layanan.layanan_id')
+        ->select('perorangan.perorangan_id', 'users.name', 'perorangan.nama_perorangan', 'sertif_tk.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+        ->where('users.role_id', 2)
+        ->orderBy('perorangan.perorangan_id', 'asc')
         ->get();
 
         // dd($peroranganAdmin);
@@ -25,35 +26,48 @@ class ViewPengajuanController extends Controller
         return view('Admin.pengajuan_tk', compact('peroranganSertif', 'peroranganAdmin'));
     }
 
-    public function perusahaanAdmin($id) {
+    public function perusahaanAdmin() {
         $perusahaanSertif = sertif_bu::all();
         $perusahaanAdmin = DB::table('users')
-        ->select('users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
-        ->join('perusahaan', 'users.id', '=', 'perusahaan.perusahaan_id')
-        ->join('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.bu_id')
-        ->join('layanan', 'perusahaan.perusahaan_id', '=', 'layanan.layanan_id')
-        ->where('users.role_id', '=', 2)
+        ->leftJoin('perusahaan', 'users.id', '=', 'perusahaan.id')
+        ->leftJoin('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.perusahaan_id')
+        ->leftJoin('layanan', 'perusahaan.layanan_id', '=', 'layanan.layanan_id')
+        ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+        ->where('users.role_id', 2)
+        ->orderBy('perusahaan.perusahaan_id', 'asc')
         ->get();
         // dd($perusahaanAdmin);
         return view('Admin.pengajuan_bu', compact('perusahaanAdmin', 'perusahaanSertif'));
     }
+    public function detailsPengajuan($perusahaan_id) {
+        $detailPerusahaanAdmin = DB::table('users')
+        ->leftJoin('perusahaan', 'users.id', '=', 'perusahaan.id')
+        ->leftJoin('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.perusahaan_id')
+        ->leftJoin('layanan', 'perusahaan.layanan_id', '=', 'layanan.layanan_id')
+        ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+        ->where('users.role_id', 2)
+        ->where('perusahaan.perusahaan_id', $perusahaan_id)
+        ->get();
 
-    public function detailPengajuan($id) {
-        // dd($id);
+        return view('Admin.details-pengajuan', [
+            'title' => 'Detail Pengajuan Badan Usaha',
+            'detailPerusahaanAdmin' => $detailPerusahaanAdmin
+        ]);
+    }
+
+    public function detailPengajuan($perorangan_id) {
         $detailPeroranganAdmin = DB::table('users')
-            ->select('users.name', 'perorangan.nama_perorangan', 'sertif_tk.bukti_trf', 'layanan.kategori', 'layanan.layanan')
-            ->join('perorangan', 'users.id', '=', 'perorangan.id')
-            ->join('sertif_tk', 'perorangan.perorangan_id', '=', 'sertif_tk.perorangan_id')
-            ->join('layanan', 'perorangan.layanan_id', '=', 'layanan.layanan_id')
-            ->where('users.role_id', 2)
-            // ->where('users.id', $id)
-            ->get();
+        ->leftJoin('perorangan', 'users.id', '=', 'perorangan.id')
+        ->leftJoin('sertif_tk', 'perorangan.perorangan_id', '=', 'sertif_tk.perorangan_id')
+        ->leftJoin('layanan', 'perorangan.layanan_id', '=', 'layanan.layanan_id')
+        ->select('perorangan.perorangan_id', 'users.name', 'perorangan.nama_perorangan', 'sertif_tk.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+        ->where('users.role_id', 2)
+        ->where('perorangan.perorangan_id', $perorangan_id)
+        ->get();
 
-            // dd($detailPeroranganAdmin->id);
-    
         return view('Admin.detail-pengajuan', [
-            'title' => 'Detail Pengajuan',
-            'detailPeroranganAdmin' => $detailPeroranganAdmin,
+            'title' => 'Detail Pengajuan Tenaga Kerja',
+            'detailPeroranganAdmin' => $detailPeroranganAdmin
         ]);
     }
 }    

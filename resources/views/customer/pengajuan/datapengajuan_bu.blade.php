@@ -66,7 +66,7 @@
                 </div>
                 <div class="mb-4">
                     <label class="text-gray-700 dark:text-gray-200" for="tlp_perusahaan">
-                        Nomor Telepon
+                        Telepon Perusahaan
                     </label>
                     <input type="text" name="tlp_perusahaan" id="tlp_perusahaan" value="{{ old('tlp_perusahaan') }}"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">

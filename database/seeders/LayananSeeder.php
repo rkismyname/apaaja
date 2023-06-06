@@ -10,10 +10,7 @@ class LayananSeeder extends Seeder
 {
     public function run()
     {
-        // Retrieve a user ID from the users table
-        $user = User::first(); // Retrieve the first user, you can modify this according to your logic
-        
-        // Check if a user exists
+        $user = User::first();
         if ($user) {
             Layanan::create([
                 'kategori' => 'Akuntan Publik',
@@ -25,8 +22,6 @@ class LayananSeeder extends Seeder
                 'id' => $user->id,
             ]);
         } else {
-            // Handle the case when there are no users in the users table
-            // You can throw an exception, log an error, or handle it based on your application's requirements
         }
     }
 }

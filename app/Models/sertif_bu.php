@@ -16,11 +16,11 @@ class sertif_bu extends Model
         'ktp',
         'npwp_dir',
         'bukti_trf',
-        'id'
+        'id',
+        'perusahaan_id'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-        return $this->hasMany(User::class);
+    public function perusahaan () {
+        return $this->belongsTo(perusahaan::class, 'perusahaan_id');
     }
 }

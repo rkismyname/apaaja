@@ -4,15 +4,15 @@
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
                     JuraganSertifikasi
                 </a>
-                <div x-data="{ isMasterDataMenuOpen: false, isPengajuanMenuOpen: false, activeItem: 'dashboard' }" class="container">
+                <div x-data="{ isMasterDataMenuOpen: false, isPengajuanMenuOpen: false }" class="container">
                     <ul class="mt-6">
                         @if (auth()->user()->isAdmin())
                             <li class="relative px-6 py-3">
-                                <span x-show="activeItem === 'dashboard'"
-                                    class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                                    aria-hidden="true"></span>
-                                <a @click="activeItem = 'dashboard'"
-                                    class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                                @if (request()->is('admin*'))
+                                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                        aria-hidden="true"></span>
+                                @endif
+                                <a class="{{ request()->is('admin*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
                                     href="/admin">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -27,11 +27,11 @@
                     </ul>
                     <ul>
                         <li class="relative px-6 py-3">
-                            <span x-show="activeItem === 'user'"
-                                class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                                aria-hidden="true"></span>
-                            <a @click="activeItem = 'user'"
-                                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            @if (request()->is('user*'))
+                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    aria-hidden="true"></span>
+                            @endif
+                            <a class="{{ request()->is('user*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
                                 href="/user">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,6 +43,10 @@
                             </a>
                         </li>
                         <li class="relative px-6 py-3">
+                            @if (request()->is('md*'))
+                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    aria-hidden="true"></span>
+                            @endif
                             <button @click="isMasterDataMenuOpen = !isMasterDataMenuOpen"
                                 class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 aria-haspopup="true">
@@ -73,11 +77,11 @@
                                     aria-label="submenu">
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="/admin/md-perusahaan">Perusahaan</a>
+                                        <a class="w-full" href="/md/md-perusahaan">Perusahaan</a>
                                     </li>
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="/admin/md-perorangan">
+                                        <a class="w-full" href="/md/md-perorangan">
                                             Perorangan
                                         </a>
                                     </li>
@@ -85,6 +89,10 @@
                             </template>
                         </li>
                         <li class="relative px-6 py-3">
+                            @if (request()->is('pengajuan*'))
+                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    aria-hidden="true"></span>
+                            @endif
                             <button @click="isPengajuanMenuOpen = !isPengajuanMenuOpen"
                                 class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                                 aria-haspopup="true">
@@ -115,13 +123,13 @@
                                     aria-label="submenu">
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="/admin/pengajuan-bu">
+                                        <a class="w-full" href="/pengajuan/pengajuan-bu">
                                             Perusahaan
                                         </a>
                                     </li>
                                     <li
                                         class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <a class="w-full" href="/admin/pengajuan-tk">
+                                        <a class="w-full" href="/pengajuan/pengajuan-tk">
                                             Perorangan
                                         </a>
                                     </li>
@@ -129,8 +137,12 @@
                             </template>
                         </li>
                         <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                                href="/admin/layanan">
+                            @if (request()->is('layanan*'))
+                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    aria-hidden="true"></span>
+                            @endif
+                            <a class="{{ request()->is('layanan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                                href="/layanan">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -145,9 +157,11 @@
                 @else
                     <ul class="mt-6">
                         <li class="relative px-6 py-3">
-                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                                aria-hidden="true"></span>
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                            @if (request()->is('customer*'))
+                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    aria-hidden="true"></span>
+                            @endif
+                            <a class="{{ request()->is('customer*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
                                 href="/customer">
                                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -173,8 +187,12 @@
                         </a>
                     </li>
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="/perorangan/data">
+                        @if (request()->is('perorangan*'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                        @endif
+                        <a class="{{ request()->is('perorangan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                            href="/perorangan/list">
                             <svg xmlns="http://www.w3.org/2000/svg" class='w-5 h-5' aria-hidden="true"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 viewBox="0 0 24 24" stroke="currentColor">
@@ -187,8 +205,12 @@
                         </a>
                     </li>
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="/perusahaan/data">
+                        @if (request()->is('perusahaan*'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                        @endif
+                        <a class="{{ request()->is('perusahaan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                            href="/perusahaan/list">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path

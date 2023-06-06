@@ -40,6 +40,7 @@ class LayananController extends Controller
         $layanan->hrg_jual = $validatedData['hrg_jual'];
         $layanan->hrg_produksi = $validatedData['hrg_produksi'];
         $layanan->hrg_pokok = $validatedData['hrg_pokok'];
+        $layanan->id = auth()->user()->id;
         $layanan->save();
 
         return redirect()->route('layanan')->with('success', 'Layanan created successfully.');

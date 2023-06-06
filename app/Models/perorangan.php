@@ -31,8 +31,8 @@ class perorangan extends Model
         return $this->belongsTo(Layanan::class, 'layanan_id');
     }
 
-    public function sertifTk()
+    public function sertif_tk()
     {
-        return $this->hasOne(SertifTk::class, 'perorangan_id');
+        return $this->hasOne(sertif_tk::class, 'perorangan_id');
     }
 }
