@@ -9,7 +9,7 @@
                         @if (auth()->user()->isAdmin())
                             <li class="relative px-6 py-3">
                                 @if (request()->is('admin*'))
-                                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                    <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                         aria-hidden="true"></span>
                                 @endif
                                 <a class="{{ request()->is('admin*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
@@ -28,7 +28,7 @@
                     <ul>
                         <li class="relative px-6 py-3">
                             @if (request()->is('user*'))
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
                             @endif
                             <a class="{{ request()->is('user*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
@@ -44,7 +44,7 @@
                         </li>
                         <li class="relative px-6 py-3">
                             @if (request()->is('md*'))
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
                             @endif
                             <button @click="isMasterDataMenuOpen = !isMasterDataMenuOpen"
@@ -90,7 +90,7 @@
                         </li>
                         <li class="relative px-6 py-3">
                             @if (request()->is('pengajuan*'))
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
                             @endif
                             <button @click="isPengajuanMenuOpen = !isPengajuanMenuOpen"
@@ -138,7 +138,7 @@
                         </li>
                         <li class="relative px-6 py-3">
                             @if (request()->is('layanan*'))
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
                             @endif
                             <a class="{{ request()->is('layanan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
@@ -158,7 +158,7 @@
                     <ul class="mt-6">
                         <li class="relative px-6 py-3">
                             @if (request()->is('customer*'))
-                                <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                     aria-hidden="true"></span>
                             @endif
                             <a class="{{ request()->is('customer*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
@@ -188,7 +188,7 @@
                     </li>
                     <li class="relative px-6 py-3">
                         @if (request()->is('perorangan*'))
-                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                            <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                 aria-hidden="true"></span>
                         @endif
                         <a class="{{ request()->is('perorangan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
@@ -206,7 +206,7 @@
                     </li>
                     <li class="relative px-6 py-3">
                         @if (request()->is('perusahaan*'))
-                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                            <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
                                 aria-hidden="true"></span>
                         @endif
                         <a class="{{ request()->is('perusahaan*') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"

@@ -11,7 +11,8 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="nama_perusahaan">
                         Nama Perusahaan
                     </label>
-                    <input type="text" name="nama_perusahaan" id="nama_perusahaan" value="{{ $perusahaan->nama_perusahaan }}"
+                    <input type="text" name="nama_perusahaan" id="nama_perusahaan"
+                        value="{{ $perusahaan->nama_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-2">
@@ -32,14 +33,16 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tlp_perusahaan">
                         Telepon Perusahaan
                     </label>
-                    <input type="text" name="tlp_perusahaan" id="tlp_perusahaan" value="{{ $perusahaan->tlp_perusahaan }}"
+                    <input type="text" name="tlp_perusahaan" id="tlp_perusahaan"
+                        value="{{ $perusahaan->tlp_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="email_perusahaan">
                         Email Perusahaan
                     </label>
-                    <input type="email" name="email_perusahaan" id="email_perusahaan" value="{{ $perusahaan->email_perusahaan }}"
+                    <input type="email" name="email_perusahaan" id="email_perusahaan"
+                        value="{{ $perusahaan->email_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-2">
@@ -82,14 +85,14 @@
                     @error('layanan')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
-                </div>                         
+                </div>
                 <div class="flex items-center justify-between">
                     <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Update Pengajuan
                     </button>
                     <a href="{{ route('list.bu') }}"
-                        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                        class="inline-block align-baseline font-bold text-sm text-yellow-400 hover:text-yellow-600">
                         Cancel
                     </a>
                 </div>

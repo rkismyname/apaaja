@@ -971,6 +971,18 @@ video {
   --tw-bg-opacity: 0.5;
 }
 
+.bg-yellow-500{
+  --tw-bg-opacity :1;
+  background-color: #eab308;
+}
+
+.bg-yellow-400{
+  --tw-bg-opacity :1;
+  background-color: #facc15;
+}
+
+
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1135,7 +1147,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(224 36 36 / var(--tw-text-opacity));
 }
-
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: #facc15;
+}
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));

@@ -4,11 +4,12 @@
     <div class="container grid px-6 mx-auto">
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="flex justify-between items-center mt-4">
-                <a href="{{ route('data.bu') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('data.bu') }}"
+                    class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
                     Tambah Pengajuan +
                 </a>
                 <a href="{{ route('form_bu') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Isi Berkas Pengajuan
                 </a>
             </div>
