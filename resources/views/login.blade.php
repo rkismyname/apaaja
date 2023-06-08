@@ -49,7 +49,7 @@
                                 type="submit" id="login-form-button">Log in</button>
                         </form>
 
-                        <hr class="my-8" />
+                        <hr class="my-6" />
                         <p class="mt-1">
                             <a class="text-sm font-medium text-yellow-400 dark:text-yellow-400 hover:underline"
                                 href="/register">

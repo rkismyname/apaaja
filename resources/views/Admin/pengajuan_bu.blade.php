@@ -20,12 +20,12 @@
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($perusahaanAdmin as $admin)
                         <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">{{ $admin->name }}</td>
-                            <td class="text-center">{{ $admin->nama_perusahaan }}</td>
-                            <td class="text-center">{{ $admin->kategori }}</td>
-                            <td class="text-center">{{ $admin->layanan }}</td>
-                            <td class="text-center">{{ $admin->bukti_trf }}</td>
+                            <td class="px-4 py-3">{{ $loop->iteration }}</td>
+                            <td class="px-4 py-3">{{ $admin->name }}</td>
+                            <td class="px-4 py-3">{{ $admin->nama_perusahaan }}</td>
+                            <td class="px-4 py-3">{{ $admin->kategori }}</td>
+                            <td class="px-4 py-3">{{ $admin->layanan }}</td>
+                            <td class="px-4 py-3">{{ $admin->bukti_trf }}</td>
                             <td>
                                 <a href="/pengajuan/details-pengajuan/{{$admin->perusahaan_id}}" class="btn btn-warning">Lihat Detail</a>
                             </td>

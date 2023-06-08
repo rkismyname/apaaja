@@ -65,12 +65,12 @@
                                     placeholder="***************" />
                             </label>
                             <button type="submit"
-                                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                            class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
                                 Buat Akun
                             </button>
 
                             <p class="mt-4">
-                                <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                                <a class="text-sm font-medium text-yellow-600 dark:text-yellow-400 hover:underline"
                                     href="/">
                                     Login dengan akun yang sudah ada
                                 </a>

@@ -15,7 +15,7 @@
         <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
             <div class="flex justify-between items-center mt-4">
                 <a href="{{ route('layanan.create') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
                     Tambah +
                 </a>
             </div>

@@ -51,11 +51,11 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Update Layanan
                     </button>
                     <a href="{{ route('layanan') }}"
-                        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Cancel
                     </a>
                 </div>

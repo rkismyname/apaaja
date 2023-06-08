@@ -11,7 +11,8 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="nama_perorangan">
                         Nama Perorangan
                     </label>
-                    <input type="text" name="nama_perorangan" id="nama_perorangan" value="{{ $perorangan->nama_perorangan }}"
+                    <input type="text" name="nama_perorangan" id="nama_perorangan"
+                        value="{{ $perorangan->nama_perorangan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-2">
@@ -64,7 +65,7 @@
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="mb-2">
+                <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="layanan">
                         Layanan
                     </label>
@@ -75,14 +76,14 @@
                     @error('layanan')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
-                </div>                         
+                </div>
                 <div class="flex items-center justify-between">
                     <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Update Pengajuan
                     </button>
                     <a href="{{ route('list.tk') }}"
-                        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Cancel
                     </a>
                 </div>

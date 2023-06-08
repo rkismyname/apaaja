@@ -92,7 +92,7 @@
                         Update Pengajuan
                     </button>
                     <a href="{{ route('list.bu') }}"
-                        class="inline-block align-baseline font-bold text-sm text-yellow-400 hover:text-yellow-600">
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Cancel
                     </a>
                 </div>
