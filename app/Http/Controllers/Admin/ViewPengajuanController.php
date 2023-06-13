@@ -81,6 +81,6 @@ class ViewPengajuanController extends Controller
         $approvalTk->status = $request->status; // Update the status to 1
         $approvalTk->update(['status' => 1]);
 
-        return redirect()->route('Admin.pengajuan_tk')->with('success', 'Status telah Diperbarui');
+        return redirect('/pengajuan/pengajuan-tk');
     }
 }

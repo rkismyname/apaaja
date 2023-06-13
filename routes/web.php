@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pengajuan/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
         Route::get('/pengajuan/detail-pengajuan/{perorangan_id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
         Route::get('/pengajuan/details-pengajuan/{perusahaan_id}', [ViewPengajuanController::class, 'detailsPengajuan'])->name('details_pengajuan');
-        Route::post('/pengajuan/detail-pengajuan/update-status-tk', [ViewPengajuanController::class, 'statusBerkasTk'])->name('status.tk');
+        Route::get('/pengajuan/detail-pengajuan/update-status-tk/{tk_id}', [ViewPengajuanController::class, 'statusBerkasTk'])->name('status.tk');
         //Layanan
         Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
         Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
@@ -84,7 +84,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/get-nama-perorangan', [PengajuanController::class, 'getNamaPerorangan'])->name('perorangan.get');
             //AJAX KATEGORI
             Route::get('/customer/pengajuan/{kategori}', [PengajuanController::class, 'getPengajuanByKategori'])->name('pengajuan.get');
-            
         });
     });
 });
