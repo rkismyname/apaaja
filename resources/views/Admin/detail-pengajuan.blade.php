@@ -29,6 +29,22 @@
                     </label>
                     <span id="layanan">{{ $perorangan->layanan }}</span>
                 </div>
+                <div class="mb-4">
+                    <label class="text-gray-700 dark:text-gray-200" for="ktp">
+                        KTP
+                    </label>
+                    <span id="ktp">{{ $perorangan->ktp }}</span>
+                </div>
+                <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
+                    <form action="{{ route('status.tk') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="tk_id" value="{{ $perorangan->tk_id }}">
+                        <input type="hidden" name="status" value="1">
+                        <button type="submit" class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Setujui Pengajuan
+                        </button>
+                    </form>
+                </div>
                 @endforeach
             </form>
         </div>

@@ -110,7 +110,7 @@
                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-400 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">
                                 Submit
                             </button>
-                            <a href="{{ route('data.bu') }}"
+                            <a href="{{ route('list.bu') }}"
                                 class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 Back
                             </a>

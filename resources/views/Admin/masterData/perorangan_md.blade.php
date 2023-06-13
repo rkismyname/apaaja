@@ -26,7 +26,18 @@
                                 <td class="px-4 py-3">{{ $perorangan->alamat }}</td>
                                 <td class="px-4 py-3">{{ $perorangan->no_telepon }}</td>
                                 <td>
-
+                                    <div>
+                                        <a href="/md/detail-md-perorangan/{{ $perorangan->perorangan_id }}"
+                                            class="flex items-center justify-between px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:shadow-outline-yellow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                            <span class="mr-4">Lihat Detail</span>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -16,9 +16,9 @@ class LayananSeeder extends Seeder
                 'kategori' => 'Akuntan Publik',
                 'layanan' => 'Asset 0-1 Milyar',
                 'tipe' => 'Perusahaan',
-                'hrg_jual' => 'Rp10.000.000,00',
-                'hrg_produksi' => 'Rp5.600.000,00',
-                'hrg_pokok' => 'Rp7.800.000,00',
+                'hrg_jual' => 'Rp10.000.000',
+                'hrg_produksi' => 'Rp5.600.000',
+                'hrg_pokok' => 'Rp7.800.000',
                 'id' => $user->id,
             ]);
         } else {

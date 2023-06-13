@@ -31,11 +31,14 @@ Route::middleware('auth')->group(function () {
         //Master Data
         Route::get('/md/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('/md/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
+        Route::get('/md/detail-md-perorangan/{perorangan_id}', [MasterDataController::class, 'detailPerorangan_md'])->name('detailMD.tk');
+        Route::get('/md/detail-md-perusahaan/{perusahaan_id}', [MasterDataController::class, 'detailPerusahaan_md'])->name('detailMD.bu');
         //Pengajuan
         Route::get('/pengajuan/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
         Route::get('/pengajuan/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
         Route::get('/pengajuan/detail-pengajuan/{perorangan_id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
         Route::get('/pengajuan/details-pengajuan/{perusahaan_id}', [ViewPengajuanController::class, 'detailsPengajuan'])->name('details_pengajuan');
+        Route::post('/pengajuan/detail-pengajuan/update-status-tk', [ViewPengajuanController::class, 'statusBerkasTk'])->name('status.tk');
         //Layanan
         Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
         Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
@@ -98,3 +101,5 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/test', [MasterDataController::class, 'testModal']);

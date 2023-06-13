@@ -17,6 +17,7 @@ class sertif_tk extends Model
         'foto_terbaru',
         'bukti_trf',
         'id',
+        'status',
         'perorangan_id'
     ];
 

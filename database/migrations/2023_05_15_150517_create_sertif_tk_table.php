@@ -20,6 +20,7 @@ class CreateSertifTkTable extends Migration
             $table->string('ijazah');
             $table->string('foto_terbaru');
             $table->string('bukti_trf');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

@@ -98,6 +98,10 @@
                         class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Tambahkan Pengajuan
                     </button>
+                    <a href="{{ route('list.tk') }}"
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Back
+                    </a>
                 </div>
             </form>
         </div>

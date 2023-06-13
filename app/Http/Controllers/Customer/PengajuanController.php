@@ -161,10 +161,11 @@ class PengajuanController extends Controller
         $sertifTk->ijazah = $validatedData['ijazah'];
         $sertifTk->foto_terbaru = $validatedData['foto_terbaru'];
         $sertifTk->bukti_trf = $validatedData['bukti_trf'];
+        // $sertifTk->status = $validatedData['status'];
         $sertifTk->perorangan_id = $namaPerorangan;
         $sertifTk->save();
 
-        return redirect()->back()->with('success', 'Data berhasil dikirim');
+        return redirect()->route('list.tk')->with('success', 'Data berhasil dikirim');
     }
 
     //Controller Form Untuk Master Data
@@ -209,7 +210,7 @@ class PengajuanController extends Controller
         $perorangan->save();
 
         // Optionally, you can redirect to a success page or perform any additional actions
-        return redirect()->back()->with('success', 'Data berhasil dikirim');
+        return redirect()->route('list.tk')->with('success', 'Data berhasil dikirim');
     }
 
 
@@ -383,7 +384,7 @@ class PengajuanController extends Controller
         $sertifBu->perusahaan_id = $namaPerusahaan;
         $sertifBu->save();
 
-        return redirect()->back()->with('success', 'Data berhasil dikirim');
+        return redirect()->route('list.bu')->with('success', 'Data berhasil dikirim');
     }
 
     public function dataPerusahaan()
@@ -427,7 +428,7 @@ class PengajuanController extends Controller
 
         $perusahaan->save();
 
-        return redirect()->back()->with('success', 'Data berhasil dikirim');
+        return redirect()->route('list.bu')->with('success', 'Data berhasil dikirim');
     }
     public function getPengajuanByKategori($kategori)
     {

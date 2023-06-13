@@ -110,10 +110,10 @@
                         class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Tambahkan Pengajuan
                     </button>
-                    {{-- <a href="{{ route('form_bu') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Isi Berkas Pengajuan
-                    </a> --}}
+                    <a href="{{ route('list.bu') }}"
+                        class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Back
+                    </a>
                 </div>
             </form>
         </div>
