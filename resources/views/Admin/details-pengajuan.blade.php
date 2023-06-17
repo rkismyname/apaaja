@@ -29,6 +29,11 @@
                     </label>
                     <span id="layanan">{{ $perusahaan->layanan }}</span>
                 </div>
+                <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
+                    <a href="/pengajuan/details-pengajuan/update-status-bu/{{ $perusahaan->bu_id }}"
+                        class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">setujuin
+                        pak</a>
+                </div>
                 @endforeach
             </form>
         </div>

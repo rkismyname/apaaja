@@ -17,6 +17,7 @@ class sertif_bu extends Model
         'npwp_dir',
         'bukti_trf',
         'id',
+        'status',
         'perusahaan_id'
     ];
 

@@ -13,7 +13,7 @@
                             <th class="px-4 py-3">Nama Perorangan</th>
                             <th class="px-4 py-3">Kategori Layanan</th>
                             <th class="px-4 py-3">Layanan</th>
-                            <th class="px-4 py-3">Bukti Transfer</th>
+                            <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
@@ -21,11 +21,11 @@
                         @foreach ($peroranganAdmin as $admin)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3">{{ $admin->name }}</td>
-                                <td class="px-4 py-3">{{ $admin->nama_perorangan }}</td>
-                                <td class="px-4 py-3">{{ $admin->kategori }}</td>
-                                <td class="px-4 py-3">{{ $admin->layanan }}</td>
-                                <td class="px-4 py-3">{{ $admin->bukti_trf }}</td>
+                                <td class="px-4 py-3">{{ $admin->name ?: '-'}}</td>
+                                <td class="px-4 py-3">{{ $admin->nama_perorangan ?: '-' }}</td>
+                                <td class="px-4 py-3">{{ $admin->kategori ?: '-' }}</td>
+                                <td class="px-4 py-3">{{ $admin->layanan ?: '-' }}</td>
+                                <td class="px-4 py-3">{{ $admin->status ?: '-'}}</td>
                                 <td>
                                     <div>
                                         <a href="/pengajuan/detail-pengajuan/{{ $admin->perorangan_id }}"

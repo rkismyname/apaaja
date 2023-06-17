@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pengajuan/detail-pengajuan/{perorangan_id}', [ViewPengajuanController::class, 'detailPengajuan'])->name('detail_pengajuan');
         Route::get('/pengajuan/details-pengajuan/{perusahaan_id}', [ViewPengajuanController::class, 'detailsPengajuan'])->name('details_pengajuan');
         Route::get('/pengajuan/detail-pengajuan/update-status-tk/{tk_id}', [ViewPengajuanController::class, 'statusBerkasTk'])->name('status.tk');
+        Route::get('/pengajuan/details-pengajuan/update-status-bu/{bu_id}', [ViewPengajuanController::class, 'statusBerkasBu'])->name('status.bu');
         //Layanan
         Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
         Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');

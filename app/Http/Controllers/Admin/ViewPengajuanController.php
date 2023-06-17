@@ -34,7 +34,7 @@ class ViewPengajuanController extends Controller
             ->leftJoin('perusahaan', 'users.id', '=', 'perusahaan.id')
             ->leftJoin('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.perusahaan_id')
             ->leftJoin('layanan', 'perusahaan.layanan_id', '=', 'layanan.layanan_id')
-            ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+            // ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
             ->where('users.role_id', 2)
             ->orderBy('perusahaan.perusahaan_id', 'asc')
             ->get();
@@ -47,7 +47,7 @@ class ViewPengajuanController extends Controller
             ->leftJoin('perusahaan', 'users.id', '=', 'perusahaan.id')
             ->leftJoin('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.perusahaan_id')
             ->leftJoin('layanan', 'perusahaan.layanan_id', '=', 'layanan.layanan_id')
-            ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
+            // ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
             ->where('users.role_id', 2)
             ->where('perusahaan.perusahaan_id', $perusahaan_id)
             ->get();
@@ -78,9 +78,17 @@ class ViewPengajuanController extends Controller
     public function statusBerkasTk(Request $request)
     {
         $approvalTk = sertif_tk::find($request->tk_id);
-        $approvalTk->status = $request->status; // Update the status to 1
+        $approvalTk->status = $request->status;
         $approvalTk->update(['status' => 1]);
 
         return redirect('/pengajuan/pengajuan-tk');
+    }
+    public function statusBerkasBu(Request $request)
+    {
+        $approvalBu = sertif_bu::find($request->bu_id);
+        $approvalBu->status = $request->status;
+        $approvalBu->update(['status' => 1]);
+
+        return redirect('/pengajuan/pengajuan-bu');
     }
 }

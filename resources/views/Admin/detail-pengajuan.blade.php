@@ -9,37 +9,37 @@
                         <label class="text-gray-700 dark:text-gray-200" for="name">
                             Nama User
                         </label>
-                        <span id="name">{{ $perorangan->name }}</span>
+                        <span id="name">{{ $perorangan->name ?: '-'}}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="nama_perorangan">
                             Nama Perorangan
                         </label>
-                        <span id="nama_perorangan">{{ $perorangan->nama_perorangan }}</span>
+                        <span id="nama_perorangan">{{ $perorangan->nama_perorangan ?: '-'}}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="kategori">
                             Kategori
                         </label>
-                        <span id="kategori">{{ $perorangan->kategori }}</span>
+                        <span id="kategori">{{ $perorangan->kategori ?: '-'}}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="layanan">
                             Layanan
                         </label>
-                        <span id="layanan">{{ $perorangan->layanan }}</span>
+                        <span id="layanan">{{ $perorangan->layanan ?: '-'}}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="ktp">
                             KTP
                         </label>
-                        <span id="ktp">{{ $perorangan->ktp }}</span>
+                        <span id="ktp">{{ $perorangan->ktp ?: '-'}}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="ktp">
-                            KTP
+                            NPWP
                         </label>
-                        <span id="ktp">{{ $perorangan->tk_id }}</span>
+                        <span id="ktp">{{ $perorangan->npwp ?: '-' }}</span>
                     </div>
                     <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
                         <a href="/pengajuan/detail-pengajuan/update-status-tk/{{ $perorangan->tk_id }}"
