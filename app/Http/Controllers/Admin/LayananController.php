@@ -12,7 +12,7 @@ class LayananController extends Controller
 {
     public function index()
     {
-        $layanans = Layanan::paginate(5);
+        $layanans = Layanan::paginate(10);
         // $layanan = layanan::all();
         return view('Admin.layanan.layanan', compact('layanans'));
     }

@@ -19,7 +19,7 @@
                         Pengajuan Belum Dikonfirmasi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        6
+                        {{ $jumlahNotApproved }}
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         Pengajuan Sudah Dikonfirmasi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        38
+                        {{ $jumlahApproved }}
                     </p>
                 </div>
             </div>

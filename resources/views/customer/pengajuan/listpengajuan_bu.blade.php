@@ -28,6 +28,7 @@
                             <th class="px-4 py-3">Alamat Perusahaan</th>
                             <th class="px-4 py-3">Kategori</th>
                             <th class="px-4 py-3">Layanan</th>
+                            <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
@@ -44,6 +45,21 @@
                                 <td class="px-4 py-3">{{ $perusahaan->alamat_perusahaan }}</td>
                                 <td class="px-4 py-3">{{ $perusahaan->layanan->kategori }}</td>
                                 <td class="px-4 py-3">{{ $perusahaan->layanan->layanan }}</td>
+                                <td class="px-4 py-3 text-xs">
+                                    @if ($perusahaan->sertif_bu->status == 1)
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            Disetujui
+                                        </span>
+                                    @elseif ($perusahaan->sertif_bu->status == 0)
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            Proses
+                                        </span>
+                                    @else
+                                        {{ $perusahaan->sertif_bu->status ?: '-'}}
+                                    @endif
+                                </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center">
                                         <a href="/perusahaan/list/{{ $perusahaan->perusahaan_id }}/edit"

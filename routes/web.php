@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         //Dashboard
         Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
+        Route::get('/admin/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('jumlah.not.approved');
+        Route::get('/admin/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('jumlah.approved');
         //Master Data
         Route::get('/md/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('/md/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
