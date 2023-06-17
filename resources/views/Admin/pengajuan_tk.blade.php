@@ -21,11 +21,30 @@
                         @foreach ($peroranganAdmin as $admin)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3">{{ $admin->name ?: '-'}}</td>
+                                <td class="px-4 py-3">{{ $admin->name ?: '-' }}</td>
                                 <td class="px-4 py-3">{{ $admin->nama_perorangan ?: '-' }}</td>
                                 <td class="px-4 py-3">{{ $admin->kategori ?: '-' }}</td>
                                 <td class="px-4 py-3">{{ $admin->layanan ?: '-' }}</td>
-                                <td class="px-4 py-3">{{ $admin->status ?: '-'}}</td>
+                                <td class="px-4 py-3 text-xs">
+                                    @if ($admin->status == 1)
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            Approved
+                                        </span>
+                                    @elseif ($admin->status == 0)
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            On Process
+                                        </span>
+                                    @elseif ($admin->status == 2)
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            Cancel
+                                        </span>
+                                    @else
+                                        {{ $admin->status ?: '-' }}
+                                    @endif
+                                </td>
                                 <td>
                                     <div>
                                         <a href="/pengajuan/detail-pengajuan/{{ $admin->perorangan_id }}"

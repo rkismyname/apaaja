@@ -23,8 +23,7 @@
                         <option value="SBU Pekerjaan Konstruksi Spesialis"
                             {{ old('kategori') === 'SBU Pekerjaan Konstruksi Spesialis' ? 'selected' : '' }}>SBU Pekerjaan
                             Konstruksi Spesialis</option>
-                        <option value="SKK Konstruksi" {{ old('kategori') === 'SKK Konstruksi' ? 'selected' : '' }}>SKK
-                            Konstruksi</option>
+                        
                         <option value="ISO Non-Akreditasi"
                             {{ old('kategori') === 'ISO Non-Akreditasi (Konstruksi & Perdagangan)' ? 'selected' : '' }}>ISO
                             Non-Akreditasi (Konstruksi & Perdagangan)</option>
@@ -33,7 +32,6 @@
                             Internasional</option>
                         <option value="ISO Akreditasi KAN" {{ old('kategori') === 'ISO Akreditasi KAN' ? 'selected' : '' }}>
                             ISO Akreditasi KAN</option>
-                        <option value="Pelatihan" {{ old('kategori') === 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option>
                         <option value="Sertifikasi Konstruksi Ketenagalistrikan"
                             {{ old('kategori') === 'Sertifikasi Konstruksi Ketenagalistrikan' ? 'selected' : '' }}>
                             Sertifikasi Konstruksi Ketenagalistrikan</option>

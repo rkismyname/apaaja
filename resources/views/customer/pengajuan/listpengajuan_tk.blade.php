@@ -27,6 +27,7 @@
                             <th class="px-4 py-3">No Telepon</th>
                             <th class="px-4 py-3">Kategori</th>
                             <th class="px-4 py-3">Layanan</th>
+                            <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
@@ -42,6 +43,30 @@
                                 <td class="px-4 py-3">{{ $perorangan->no_telepon }}</td>
                                 <td class="px-4 py-3">{{ $perorangan->layanan->kategori }}</td>
                                 <td class="px-4 py-3">{{ $perorangan->layanan->layanan }}</td>
+                                <td class="px-4 py-3 text-xs">
+                                    @if ($perorangan->sertif_tk)
+                                        @if ($perorangan->sertif_tk->status == 1)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                Disetujui
+                                            </span>
+                                        @elseif ($perorangan->sertif_tk->status == 0)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                Proses
+                                            </span>
+                                        @elseif ($perorangan->sertif_tk->status == 2)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                Ditolak
+                                            </span>
+                                        @else
+                                            {{ $perorangan->sertif_tk->status ?: '-' }}
+                                        @endif
+                                    @else
+                                        {{ '-' }}
+                                    @endif
+                                </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center">
                                         <a href="/perorangan/list/{{ $perorangan->perorangan_id }}/edit"

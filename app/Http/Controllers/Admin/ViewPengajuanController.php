@@ -83,11 +83,29 @@ class ViewPengajuanController extends Controller
 
         return redirect('/pengajuan/pengajuan-tk');
     }
+
+    public function statusCancelledTk(Request $request)
+    {
+        $cancelledTk = sertif_tk::find($request->tk_id);
+        $cancelledTk->status = $request->status;
+        $cancelledTk->update(['status' => 2]);
+
+        return redirect('/pengajuan/pengajuan-tk');
+    }
     public function statusBerkasBu(Request $request)
     {
         $approvalBu = sertif_bu::find($request->bu_id);
         $approvalBu->status = $request->status;
         $approvalBu->update(['status' => 1]);
+
+        return redirect('/pengajuan/pengajuan-bu');
+    }
+
+    public function statusCancelledBu(Request $request)
+    {
+        $cancelledBu = sertif_bu::find($request->bu_id);
+        $cancelledBu->status = $request->status;
+        $cancelledBu->update(['status' => 2]);
 
         return redirect('/pengajuan/pengajuan-bu');
     }

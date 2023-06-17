@@ -9,45 +9,136 @@
                         <label class="text-gray-700 dark:text-gray-200" for="name">
                             Nama User
                         </label>
-                        <span id="name">{{ $perorangan->name ?: '-'}}</span>
+                        <span id="name">{{ $perorangan->name ?: '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="nama_perorangan">
                             Nama Perorangan
                         </label>
-                        <span id="nama_perorangan">{{ $perorangan->nama_perorangan ?: '-'}}</span>
+                        <span id="nama_perorangan">{{ $perorangan->nama_perorangan ?: '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="kategori">
                             Kategori
                         </label>
-                        <span id="kategori">{{ $perorangan->kategori ?: '-'}}</span>
+                        <span id="kategori">{{ $perorangan->kategori ?: '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="layanan">
                             Layanan
                         </label>
-                        <span id="layanan">{{ $perorangan->layanan ?: '-'}}</span>
+                        <span id="layanan">{{ $perorangan->layanan ?: '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <label class="text-gray-700 dark:text-gray-200" for="ktp">
                             KTP
                         </label>
-                        <span id="ktp">{{ $perorangan->ktp ?: '-'}}</span>
+                        <div>
+                            <a href="javascript:void(0)"
+                                onclick="openViewModal('{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}')">View</a>
+                            <a href="{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}" download>Download</a>
+                        </div>
                     </div>
                     <div class="mb-4">
-                        <label class="text-gray-700 dark:text-gray-200" for="ktp">
+                        <label class="text-gray-700 dark:text-gray-200" for="npwp">
                             NPWP
                         </label>
-                        <span id="ktp">{{ $perorangan->npwp ?: '-' }}</span>
+                        <div>
+                            <a href="javascript:void(0)"
+                                onclick="openViewModal('{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}')">View</a>
+                            <a href="{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}" download>Download</a>
+                        </div>
                     </div>
                     <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
                         <a href="/pengajuan/detail-pengajuan/update-status-tk/{{ $perorangan->tk_id }}"
                             class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">setujuin
+                            pak</a>
+                        <a href="/pengajuan/detail-pengajuan/update-tk-cancelled/{{ $perorangan->tk_id }}"
+                            class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">cancel
                             pak</a>
                     </div>
                 @endforeach
             </form>
         </div>
     </div>
+    <!-- Add a modal element for view pop-up -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="viewContent" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Add CSS styles for the modal -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+
+    <!-- Add AJAX script -->
+    <!-- Add AJAX script -->
+    <script>
+        // Function to open view modal
+        function openViewModal(filePath) {
+            document.getElementById("viewContent").src = filePath;
+            document.getElementById("viewModal").style.display = "block";
+        }
+
+        // Function to close view modal
+        function closeViewModal() {
+            document.getElementById("viewModal").style.display = "none";
+        }
+
+        // Close the modal when the user clicks on the close button (x)
+        var closeBtn = document.getElementsByClassName("close")[0];
+        closeBtn.onclick = function() {
+            closeViewModal();
+        }
+
+        // Close the modal when the user clicks outside the modal content
+        window.onclick = function(event) {
+            var modal = document.getElementById("viewModal");
+            if (event.target == modal) {
+                closeViewModal();
+            }
+        }
+    </script>
 @endsection
