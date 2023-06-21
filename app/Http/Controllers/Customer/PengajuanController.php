@@ -105,14 +105,14 @@ class PengajuanController extends Controller
             'npwp' => 'required|file|mimes:pdf|max:2048',
             'ijazah' => 'required|file|mimes:pdf|max:2048',
             'foto_terbaru' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'bukti_trf' => 'required|file|mimes:pdf|max:2048'
+            'bukti_trf' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ], [
             'ktp.required' => 'WAJIB UPLOAD FILE KTP',
             'npwp.required' => 'WAJIB UPLOAD FILE NPWP',
             'ijazah.required' => 'WAJIB UPLOAD FILE IJAZAH',
             'foto_terbaru.required' => 'WAJIB UPLOAD FILE FOTO TERBARU',
             'foto_terbaru.image' => 'FORMAT FILE HARUS JPG. JPEG, atau PNG',
-            '*.mimes' => 'FILE YANG DIUPLOAD HARUS BERFORMAT PDF',
+            'bukti_trf.required' => 'Wajib mengunggah file Bukti Transfer'
         ]);
 
         //UPLOAD FILE KTP
@@ -183,16 +183,14 @@ class PengajuanController extends Controller
             'layanan' => 'required',
             'nama_perorangan' => 'required|string',
             'no_telepon' => 'required|regex:/^[0-9]+$/',
-            'no_npwp' => 'required|regex:/^[0-9]+$/',
+            'no_npwp' => 'required|regex:/^[0-9\-,.]+$/',
             'no_ktp' => 'required|regex:/^[0-9]+$/',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string',
         ],[
-            'no_telepon.required' => 'Wajib diisi',
+            '*.required' => 'Wajib diisi',
             'no_telepon.regex' => 'Inputan harus berupa angka',
-            'no_npwp.required' => 'Wajib diisi',
             'no_npwp.regex' => 'Inputan harus berupa angka',
-            'no_ktp.required' => 'Wajib diisi',
             'no_ktp.regex' => 'Inputan harus berupa angka'
         ]);
 
@@ -249,9 +247,9 @@ class PengajuanController extends Controller
             'nama_perorangan' => 'required',
             'nama_pj' => 'required',
             'bidang' => 'required',
-            'tlp_perusahaan' => 'required',
+            'tlp_perusahaan' => 'required|regex:/^[0-9]+$/',
             'email_perusahaan' => 'required',
-            'tlp_pj' => 'required',
+            'tlp_pj' => 'required|regex:/^[0-9]+$/',
             'alamat_perusahaan' => 'required',
             'kategori' => 'required',
             'layanan' => 'required',
@@ -311,7 +309,7 @@ class PengajuanController extends Controller
             'akte_peru' => 'required|file|mimes:pdf|max:2048',
             'ktp' => 'required|file|mimes:pdf|max:2048',
             'npwp_dir' => 'required|file|mimes:pdf|max:2048',
-            'bukti_trf' => 'required|file|mimes:pdf|max:2048'
+            'bukti_trf' => 'required|image|mimes:jpg,jpeg,png|max:2048'
             // 'id' => auth()->user()->id
         ], [
             'nib.required' => 'Wajib mengunggah file NIB',
@@ -320,7 +318,7 @@ class PengajuanController extends Controller
             'akte_peru.required' => 'Wajib mengunggah file Akte Perusahaan',
             'ktp.required' => 'Wajib mengunggah file KTP',
             'npwp_dir.required' => 'Wajib mengunggah file NPWP Direktur',
-            '*.mimes' => 'File yang diunggah harus berformat PDF',
+            'bukti_trf.required' => 'Wajib mengunggah file Bukti Transfer',
         ]);
 
         // Mengunggah file NIB
@@ -410,10 +408,14 @@ class PengajuanController extends Controller
             'nama_perusahaan' => 'required|string',
             'nama_pj' => 'required|string',
             'bidang' => 'required|string',
-            'tlp_perusahaan' => 'required|string',
+            'tlp_perusahaan' => 'required|regex:/^[0-9\(,)]+$/',
             'email_perusahaan' => 'required',
-            'tlp_pj' => 'required|string',
+            'tlp_pj' => 'required|regex:/^[0-9]+$/',
             'alamat_perusahaan' => 'required|string'
+        ], [
+            '*.required' => 'Wajib diisi',
+            'tlp_perusahaan.regex' => 'Inputan harus berupa angka',
+            'tlp_pj.regex' => 'Inputan harus berupa angka'
         ]);
 
         $perusahaan = new perusahaan();

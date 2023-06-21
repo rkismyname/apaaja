@@ -23,10 +23,17 @@ class DashboardController extends Controller
     }
     public function dashboardCustomer()
     {
+        $jumlahNotApproved = $this->jumlahNotApproved();
+        $jumlahApproved = $this->jumlahApproved();
+        $jumlahDitolak = $this->jumlahDitolak();
+
         $user = Auth::user()->name;
         return view('customer.dashboard', [
             'tittle' => 'Dashboard',
-            'user' => $user
+            'user' => $user,
+            'jumlahNotApproved' => $jumlahNotApproved,
+            'jumlahApproved' => $jumlahApproved,
+            'jumlahDitolak' => $jumlahDitolak
         ]);
     }
     public function jumlahNotApproved()
@@ -37,10 +44,9 @@ class DashboardController extends Controller
             ->count() + DB::table('sertif_bu')
             ->where('status', 0)
             ->count();
-
+        
         return $jumlahNotApproved;
     }
-
     public function jumlahApproved()
     {
         // Hitung jumlah pengajuan yang sudah dikonfirmasi (approved)
@@ -52,7 +58,6 @@ class DashboardController extends Controller
 
         return $jumlahApproved;
     }
-
     public function jumlahDitolak()
     {
         $jumlahDitolak = DB::table('sertif_tk')

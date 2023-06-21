@@ -29,9 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         //Dashboard
         Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
-        Route::get('/admin/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('jumlah.not.approved');
-        Route::get('/admin/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('jumlah.approved');
-        Route::get('/admin/jumlah-ditolak', [DashboardController::class, 'jumlahDitolak'])->name('jumalh.ditolak');
+        Route::get('/admin/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('adm.jumlah.not.approved');
+        Route::get('/admin/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('adm.jumlah.approved');
+        Route::get('/admin/jumlah-ditolak', [DashboardController::class, 'jumlahDitolak'])->name('adm.jumlah.ditolak');
         //Master Data
         Route::get('/md/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('/md/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
@@ -69,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::middleware('role:user')->group(function () {
             Route::get('/customer', [DashboardController::class, 'dashboardCustomer'])->name('customer');
+            Route::get('/customer/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('cust.jumlah.not.approved');
+            Route::get('/customer/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('cust.jumlah.approved');
+            Route::get('/customer/jumlah-ditolak', [DashboardController::class, 'jumlahDitolak'])->name('cust.jumlah.ditolak');
             //Pengajuan Badan Usaha
             Route::get('/perusahaan/list', [PengajuanController::class, 'listPerusahaan'])->name('list.bu');
             Route::get('/perusahaan/list/{perusahaan_id}/edit', [PengajuanController::class, 'editPerusahaan'])->name('list.bu.edit');
