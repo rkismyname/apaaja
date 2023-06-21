@@ -43,9 +43,9 @@
                         </label>
                         <div
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-400 dark:bg-green-700 dark:text-green-100"
                                 onclick="openViewModal('{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}')">View</a>
-                            <a href="{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}" download>Download</a>
+                            <a href="{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}" class="px-2 py-1 font-semibold leading-tight text-blue-100 bg-blue-400 dark:bg-blue-400 dark:text-blue-100" download>Download</a>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -54,9 +54,9 @@
                         </label>
                         <div
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-400 dark:bg-green-700 dark:text-green-100"
                                 onclick="openViewModal('{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}')">View</a>
-                            <a href="{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}" download>Download</a>
+                            <a href="{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}" class="px-2 py-1 font-semibold leading-tight text-blue-100 bg-blue-400 dark:bg-blue-400 dark:text-blue-100" download>Download</a>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -65,9 +65,9 @@
                         </label>
                         <div
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-400 dark:bg-green-700 dark:text-green-100"
                                 onclick="openViewModal('{{ asset('storage/tk/file_ijazah/' . $perorangan->ijazah) }}')">View</a>
-                            <a href="{{ asset('storage/tk/file_ijazah/' . $perorangan->ijazah) }}" download>Download</a>
+                            <a href="{{ asset('storage/tk/file_ijazah/' . $perorangan->ijazah) }}" class="px-2 py-1 font-semibold leading-tight text-blue-100 bg-blue-400 dark:bg-blue-400 dark:text-blue-100" download>Download</a>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -76,9 +76,9 @@
                         </label>
                         <div
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-400 dark:bg-green-700 dark:text-green-100"
                                 onclick="openViewModal('{{ asset('storage/tk/file_foto_terbaru/' . $perorangan->foto_terbaru) }}')">View</a>
-                            <a href="{{ asset('storage/tk/file_foto_terbaru/' . $perorangan->foto_terbaru) }}" download>Download</a>
+                            <a href="{{ asset('storage/tk/file_foto_terbaru/' . $perorangan->foto_terbaru) }}" class="px-2 py-1 font-semibold leading-tight text-blue-100 bg-blue-400 dark:bg-blue-400 dark:text-blue-100" download>Download</a>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -87,18 +87,24 @@
                         </label>
                         <div
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-400 dark:bg-green-700 dark:text-green-100"
                                 onclick="openViewModal('{{ asset('storage/tk/file_bukti_trf/' . $perorangan->bukti_trf) }}')">View</a>
-                            <a href="{{ asset('storage/tk/file_bukti_trf/' . $perorangan->bukti_trf) }}" download>Download</a>
+                            <a href="{{ asset('storage/tk/file_bukti_trf/' . $perorangan->bukti_trf) }}" class="px-2 py-1 font-semibold leading-tight text-blue-100 bg-blue-400 dark:bg-blue-400 dark:text-blue-100" download>Download</a>
                         </div>
                     </div>
-                    <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
-                        <a href="/pengajuan/detail-pengajuan/update-status-tk/{{ $perorangan->tk_id }}"
-                            class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">Setujui
-                            Pengajuan</a>
-                        <a href="/pengajuan/detail-pengajuan/update-tk-cancelled/{{ $perorangan->tk_id }}"
-                            class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">Tolak
-                            Pengajuan</a>
+                    <div class="flex items-center justify-between">
+                        <a href="{{ route('view_tk') }}"
+                            class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Back
+                        </a>
+                        <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">
+                            <a href="/pengajuan/detail-pengajuan/update-status-tk/{{ $perorangan->tk_id }}"
+                                class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">Setujui
+                                Pengajuan</a>
+                            <a href="/pengajuan/detail-pengajuan/update-tk-cancelled/{{ $perorangan->tk_id }}"
+                                class="inline-flex justify-center border text-sm border-transparent shadow-sm bg-yellow-400 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline">Tolak
+                                Pengajuan</a>
+                        </div>
                     </div>
                 @endforeach
             </form>
