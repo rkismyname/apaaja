@@ -72,6 +72,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/customer/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('cust.jumlah.not.approved');
             Route::get('/customer/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('cust.jumlah.approved');
             Route::get('/customer/jumlah-ditolak', [DashboardController::class, 'jumlahDitolak'])->name('cust.jumlah.ditolak');
+
+            Route::get('/informasi', [DashboardController::class, 'viewInformasi'])->name('informasi');
             //Pengajuan Badan Usaha
             Route::get('/perusahaan/list', [PengajuanController::class, 'listPerusahaan'])->name('list.bu');
             Route::get('/perusahaan/list/{perusahaan_id}/edit', [PengajuanController::class, 'editPerusahaan'])->name('list.bu.edit');

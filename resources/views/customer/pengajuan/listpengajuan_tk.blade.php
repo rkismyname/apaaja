@@ -43,7 +43,7 @@
                                 <td class="px-4 py-3">{{ $perorangan->no_telepon }}</td>
                                 <td class="px-4 py-3">{{ $perorangan->layanan->kategori }}</td>
                                 <td class="px-4 py-3">{{ $perorangan->layanan->layanan }}</td>
-                                <td class="px-4 py-3 text-xs">
+                                <td class="px-4 py-3 text-xs text-white">
                                     @if ($perorangan->sertif_tk)
                                         @if ($perorangan->sertif_tk->status == 1)
                                             <span
@@ -52,12 +52,12 @@
                                             </span>
                                         @elseif ($perorangan->sertif_tk->status == 0)
                                             <span
-                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                class="px-2 py-1 font-semibold leading-tight text-yellow-100 bg-yellow-400 rounded-full dark:bg-yellow-400 dark:text-yellow-100">
                                                 Proses
                                             </span>
                                         @elseif ($perorangan->sertif_tk->status == 2)
                                             <span
-                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                class="px-2 py-1 font-semibold leading-tight text-red-100 bg-red-700 rounded-full dark:bg-red-700 dark:text-red-100">
                                                 Ditolak
                                             </span>
                                         @else

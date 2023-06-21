@@ -45,14 +45,21 @@
                                 <td class="px-4 py-3">{{ $perusahaan->alamat_perusahaan }}</td>
                                 <td class="px-4 py-3">{{ $perusahaan->layanan->kategori }}</td>
                                 <td class="px-4 py-3">{{ $perusahaan->layanan->layanan }}</td>
-                                <td class="px-4 py-3 text-xs">
+                                <td class="px-4 py-3 text-xs text-white">
                                     @if ($perusahaan->sertif_bu)
                                         @if ($perusahaan->sertif_bu->status == 1)
-                                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                                 Disetujui
                                             </span>
                                         @elseif ($perusahaan->sertif_bu->status == 0)
-                                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-yellow-100 bg-yellow-400 rounded-full dark:bg-yellow-400 dark:text-yellow-100">
+                                                Proses
+                                            </span>
+                                        @elseif ($perusahaan->sertif_bu->status == 0)
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight text-red-100 bg-red-700 rounded-full dark:bg-red-700 dark:text-red-100">
                                                 Proses
                                             </span>
                                         @else
@@ -61,7 +68,7 @@
                                     @else
                                         {{ '-' }}
                                     @endif
-                                </td>                                
+                                </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center">
                                         <a href="/perusahaan/list/{{ $perusahaan->perusahaan_id }}/edit"

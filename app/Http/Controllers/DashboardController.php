@@ -36,6 +36,12 @@ class DashboardController extends Controller
             'jumlahDitolak' => $jumlahDitolak
         ]);
     }
+
+    public function viewInformasi()
+    {
+        return view('customer.informasi.informasi');
+    }
+    
     public function jumlahNotApproved()
     {
         // Hitung jumlah pengajuan belum dikonfirmasi (not approved)
