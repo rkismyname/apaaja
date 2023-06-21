@@ -19,7 +19,6 @@ class LayananSeeder extends Seeder
                 'hrg_jual' => 'Rp10.000.000',
                 'hrg_produksi' => 'Rp5.600.000',
                 'hrg_pokok' => 'Rp7.800.000',
-                'id' => $user->id,
             ]);
         } else {
         }

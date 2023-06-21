@@ -83,9 +83,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        // Delete the user
+        if ($user->perorangan()->exists()) {
+            return redirect()->route('user.index')->with('error', 'Layanan sedang dalam proses pengajuan.');
+        } elseif ($user->perusahaan()->exists()){
+            return redirect()->route('user.index')->with('error', 'Layanan sedang dalam proses pengajuan.');
+        }
         $user->delete();
-
         // Redirect to the users list with a success message
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }

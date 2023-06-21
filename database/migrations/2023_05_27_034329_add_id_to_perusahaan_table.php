@@ -14,7 +14,7 @@ class AddIdToPerusahaanTable extends Migration
     public function up()
     {
         Schema::table('perusahaan', function (Blueprint $table) {
-            $table->foreignId('id')->after('alamat_perusahaan')->constrained('users', 'id');
+            $table->foreignId('id')->after('alamat_perusahaan')->constrained('users', 'id')->onDelete('cascade');
         });
     }
 

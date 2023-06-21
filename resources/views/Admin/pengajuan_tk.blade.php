@@ -45,8 +45,8 @@
                                         {{ $admin->status ?: '-' }}
                                     @endif
                                 </td>
-                                <td>
-                                    <div>
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center">
                                         <a href="/pengajuan/detail-pengajuan/{{ $admin->perorangan_id }}"
                                             class="flex items-center justify-between px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:shadow-outline-yellow">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -57,6 +57,7 @@
                                             </svg>
                                             <span class="mr-4">Lihat Detail</span>
                                         </a>
+                                        <a href=""></a>
                                     </div>
                                 </td>
                             </tr>

@@ -20,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',
@@ -63,11 +64,11 @@ class User extends Authenticatable
 
     public function perusahaan()
     {
-        return $this->hasMany(perusahaan::class);
+        return $this->hasMany(perusahaan::class, 'id');
     }
 
     public function perorangan()
     {
-        return $this->hasMany(perorangan::class);
+        return $this->hasMany(perorangan::class, 'id');
     }
 }

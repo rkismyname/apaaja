@@ -55,4 +55,22 @@ class MasterDataController extends Controller
     public function testModal(){
         return view('Admin.testModal');
     }
+
+    public function destroyTk($perorangan_id)
+    {
+        $orang = perorangan::findOrFail($perorangan_id);
+        $orang->sertif_tk()->delete();
+        $orang->delete();
+
+        return redirect('/md/md-perorangan');
+    }
+
+    public function destroyBu($perusahaan_id) 
+    {
+        $badan = perusahaan::findOrFail($perusahaan_id);
+        $badan->sertif_bu()->delete();
+        $badan->delete();
+
+        return redirect('/md/md-perusahaan');
+    }
 }

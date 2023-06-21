@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\perorangan;
 use App\Models\sertif_bu;
 use App\Models\sertif_tk;
 use Illuminate\Support\Facades\DB;
@@ -47,10 +48,12 @@ class ViewPengajuanController extends Controller
             ->leftJoin('perusahaan', 'users.id', '=', 'perusahaan.id')
             ->leftJoin('sertif_bu', 'perusahaan.perusahaan_id', '=', 'sertif_bu.perusahaan_id')
             ->leftJoin('layanan', 'perusahaan.layanan_id', '=', 'layanan.layanan_id')
-            // ->select('perusahaan.perusahaan_id', 'users.name', 'perusahaan.nama_perusahaan', 'sertif_bu.bukti_trf', 'layanan.kategori', 'layanan.layanan')
             ->where('users.role_id', 2)
             ->where('perusahaan.perusahaan_id', $perusahaan_id)
+            ->where('sertif_bu.bu_id', $perusahaan_id)
             ->get();
+
+            // dd($detailPerusahaanAdmin);
 
         return view('Admin.details-pengajuan', [
             'title' => 'Detail Pengajuan Badan Usaha',

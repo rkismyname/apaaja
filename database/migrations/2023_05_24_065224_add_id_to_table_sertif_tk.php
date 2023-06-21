@@ -14,7 +14,7 @@ class AddIdToTableSertifTk extends Migration
     public function up()
     {
         Schema::table('sertif_tk', function (Blueprint $table) {
-            $table->foreignId('id')->after('bukti_trf')->constrained('users', 'id');
+            $table->foreignId('id')->after('bukti_trf')->constrained('users', 'id')->onDelete('cascade');
         });
     }
 

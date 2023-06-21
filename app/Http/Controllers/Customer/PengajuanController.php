@@ -31,9 +31,10 @@ class PengajuanController extends Controller
         return view('customer.pengajuan.listpengajuan_tk', compact('listPerorangan'));
     }
 
-    public function editPerorangan($perorangan_id) {
+    public function editPerorangan($perorangan_id)
+    {
         $perorangan = Perorangan::findOrFail($perorangan_id);
-        
+
         return view('customer.pengajuan.editList_tk', compact('perorangan'));
     }
     public function updatePerorangan(Request $request, $perorangan_id)
@@ -42,9 +43,9 @@ class PengajuanController extends Controller
             'nama_perorangan' => 'required',
             'alamat' => 'required',
             'tanggal_lahir' => 'required',
-            'no_ktp' => 'required',
-            'no_npwp' => 'required',
-            'no_telepon' => 'required',
+            'no_ktp' => 'required|regex:/^[0-9]+$/',
+            'no_npwp' => 'required|regex:/^[0-9]+$/',
+            'no_telepon' => 'required|regex:/^[0-9]+$/',
             'kategori' => 'required',
             'layanan' => 'required',
         ]);
@@ -103,13 +104,14 @@ class PengajuanController extends Controller
             'ktp' => 'required|file|mimes:pdf|max:2048',
             'npwp' => 'required|file|mimes:pdf|max:2048',
             'ijazah' => 'required|file|mimes:pdf|max:2048',
-            'foto_terbaru' => 'required|file|mimes:pdf|max:2048',
+            'foto_terbaru' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'bukti_trf' => 'required|file|mimes:pdf|max:2048'
         ], [
             'ktp.required' => 'WAJIB UPLOAD FILE KTP',
             'npwp.required' => 'WAJIB UPLOAD FILE NPWP',
             'ijazah.required' => 'WAJIB UPLOAD FILE IJAZAH',
             'foto_terbaru.required' => 'WAJIB UPLOAD FILE FOTO TERBARU',
+            'foto_terbaru.image' => 'FORMAT FILE HARUS JPG. JPEG, atau PNG',
             '*.mimes' => 'FILE YANG DIUPLOAD HARUS BERFORMAT PDF',
         ]);
 
@@ -140,7 +142,7 @@ class PengajuanController extends Controller
             $request->file('foto_terbaru')->storeAs('public/tk/file_foto_terbaru', $foto_terbaruFile);
             $validatedData['foto_terbaru'] = $foto_terbaruFile;
         }
-
+        
         //UPLOAD BUKTI TRF
         if ($request->hasFile('bukti_trf')) {
             $bukti_trfFile = $request->file('bukti_trf')->getClientOriginalName();
@@ -180,11 +182,18 @@ class PengajuanController extends Controller
             'kategori' => 'required',
             'layanan' => 'required',
             'nama_perorangan' => 'required|string',
-            'no_telepon' => 'required|string',
-            'no_npwp' => 'required|string',
-            'no_ktp' => 'required|string',
+            'no_telepon' => 'required|regex:/^[0-9]+$/',
+            'no_npwp' => 'required|regex:/^[0-9]+$/',
+            'no_ktp' => 'required|regex:/^[0-9]+$/',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string',
+        ],[
+            'no_telepon.required' => 'Wajib diisi',
+            'no_telepon.regex' => 'Inputan harus berupa angka',
+            'no_npwp.required' => 'Wajib diisi',
+            'no_npwp.regex' => 'Inputan harus berupa angka',
+            'no_ktp.required' => 'Wajib diisi',
+            'no_ktp.regex' => 'Inputan harus berupa angka'
         ]);
 
         $perorangan = new Perorangan();
@@ -228,9 +237,10 @@ class PengajuanController extends Controller
         return view('customer.pengajuan.listpengajuan_bu', compact('listPerusahaan'));
     }
 
-    public function editPerusahaan($perusahaan_id) {
+    public function editPerusahaan($perusahaan_id)
+    {
         $perusahaan = Perusahaan::findOrFail($perusahaan_id);
-        
+
         return view('customer.pengajuan.editList_bu', compact('perusahaan'));
     }
     public function updatePerusahaan(Request $request, $perusahaan_id)

@@ -5,48 +5,91 @@
         <div class="w-full overflow-x-auto mt-4">
             <form id="details-form" class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 @foreach ($detailPeroranganAdmin as $perorangan)
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="name">
                             Nama User
                         </label>
-                        <span id="name">{{ $perorangan->name ?: '-' }}</span>
+                        <span
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            id="name">{{ $perorangan->name ?: '-' }}</span>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="nama_perorangan">
                             Nama Perorangan
                         </label>
-                        <span id="nama_perorangan">{{ $perorangan->nama_perorangan ?: '-' }}</span>
+                        <span
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            id="nama_perorangan">{{ $perorangan->nama_perorangan ?: '-' }}</span>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="kategori">
                             Kategori
                         </label>
-                        <span id="kategori">{{ $perorangan->kategori ?: '-' }}</span>
+                        <span
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            id="kategori">{{ $perorangan->kategori ?: '-' }}</span>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="layanan">
                             Layanan
                         </label>
-                        <span id="layanan">{{ $perorangan->layanan ?: '-' }}</span>
+                        <span
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                            id="layanan">{{ $perorangan->layanan ?: '-' }}</span>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="ktp">
                             KTP
                         </label>
-                        <div>
+                        <div
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                             <a href="javascript:void(0)"
                                 onclick="openViewModal('{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}')">View</a>
                             <a href="{{ asset('storage/tk/file_ktp/' . $perorangan->ktp) }}" download>Download</a>
                         </div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label class="text-gray-700 dark:text-gray-200" for="npwp">
                             NPWP
                         </label>
-                        <div>
+                        <div
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                             <a href="javascript:void(0)"
                                 onclick="openViewModal('{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}')">View</a>
                             <a href="{{ asset('storage/tk/file_npwp/' . $perorangan->npwp) }}" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="text-gray-700 dark:text-gray-200" for="ijazah">
+                            Ijazah
+                        </label>
+                        <div
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            <a href="javascript:void(0)"
+                                onclick="openViewModal('{{ asset('storage/tk/file_ijazah/' . $perorangan->ijazah) }}')">View</a>
+                            <a href="{{ asset('storage/tk/file_ijazah/' . $perorangan->ijazah) }}" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="text-gray-700 dark:text-gray-200" for="foto_terbaru">
+                            Foto Terbaru
+                        </label>
+                        <div
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            <a href="javascript:void(0)"
+                                onclick="openViewModal('{{ asset('storage/tk/file_foto_terbaru/' . $perorangan->foto_terbaru) }}')">View</a>
+                            <a href="{{ asset('storage/tk/file_foto_terbaru/' . $perorangan->foto_terbaru) }}" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="text-gray-700 dark:text-gray-200" for="bukti_trf">
+                            Bukti Transfer
+                        </label>
+                        <div
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
+                            <a href="javascript:void(0)"
+                                onclick="openViewModal('{{ asset('storage/tk/file_bukti_trf/' . $perorangan->bukti_trf) }}')">View</a>
+                            <a href="{{ asset('storage/tk/file_bukti_trf/' . $perorangan->bukti_trf) }}" download>Download</a>
                         </div>
                     </div>
                     <div class="px-4 py-3 bg-white text-right sm:px-6 dark:bg-gray-800">

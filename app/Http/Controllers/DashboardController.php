@@ -12,11 +12,13 @@ class DashboardController extends Controller
     {
         $jumlahNotApproved = $this->jumlahNotApproved();
         $jumlahApproved = $this->jumlahApproved();
+        $jumlahDitolak = $this->jumlahDitolak();
 
         return view('Admin.dashboard', [
             'title' => 'Dashboard',
             'jumlahNotApproved' => $jumlahNotApproved,
-            'jumlahApproved' => $jumlahApproved
+            'jumlahApproved' => $jumlahApproved,
+            'jumlahDitolak' => $jumlahDitolak
         ]);
     }
     public function dashboardCustomer()
@@ -49,5 +51,16 @@ class DashboardController extends Controller
             ->count();
 
         return $jumlahApproved;
+    }
+
+    public function jumlahDitolak()
+    {
+        $jumlahDitolak = DB::table('sertif_tk')
+        ->where('status', 2)
+        ->count() + DB::table('sertif_bu')
+        ->where('status', 2)
+        ->count();
+
+        return $jumlahDitolak;
     }
 }

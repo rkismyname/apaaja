@@ -15,7 +15,7 @@ class AddPerusahaanIdToSertifBuTable extends Migration
     {
         Schema::table('sertif_bu', function (Blueprint $table) {
             $table->unsignedBigInteger('perusahaan_id')->nullable();
-            $table->foreign('perusahaan_id')->references('perusahaan_id')->on('perusahaan');
+            $table->foreign('perusahaan_id')->references('perusahaan_id')->on('perusahaan')->onDelete('cascade');
         });
     }
 

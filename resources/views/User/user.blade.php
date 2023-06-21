@@ -8,7 +8,7 @@
                     class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
                     Tambah +
                 </a>
-                <div class="relative flex items-center justify-end">
+                {{-- <div class="relative flex items-center justify-end">
                     <div class="relative w-48">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-2">
                             <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -21,7 +21,7 @@
                             class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                             type="text" placeholder="Search" aria-label="Search" />
                     </div>
-                </div>
+            </div> --}}
             </div>
             <div class="w-full overflow-x-auto mt-4">
                 <table class="w-full whitespace-no-wrap">

@@ -66,9 +66,37 @@
                     <select name="kategori" id="kategori"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
                         <option value="">--Pilih Kategori--</option>
-                        <option value="Pelatihan" {{ old('kategori') === 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option>
-                        <option value="SKK Konstruksi" {{ old('kategori') === 'SKK Konstruksi' ? 'selected' : '' }}>SKK
-                            Konstruksi</option>
+                        <option value="Akuntan Publik" {{ old('kategori') === 'Akuntan Publik' ? 'selected' : '' }}>Akuntan
+                            Publik</option>
+                        <option value="Audit SMK3" {{ old('kategori') === 'Audit SMK3' ? 'selected' : '' }}>Audit SMK3
+                        </option>
+                        <option value="SBU Pekerjaan Konstruksi Umum"
+                            {{ old('kategori') === 'SBU Pekerjaan Konstruksi Umum' ? 'selected' : '' }}>SBU Pekerjaan
+                            Konstruksi Umum</option>
+                        <option value="SBU Pekerjaan Konstruksi Spesialis"
+                            {{ old('kategori') === 'SBU Pekerjaan Konstruksi Spesialis' ? 'selected' : '' }}>SBU Pekerjaan
+                            Konstruksi Spesialis</option>
+                        <option value="ISO Non-Akreditasi"
+                            {{ old('kategori') === 'ISO Non-Akreditasi (Konstruksi & Perdagangan)' ? 'selected' : '' }}>ISO
+                            Non-Akreditasi (Konstruksi & Perdagangan)</option>
+                        <option value="ISO Terakreditasi Internasional"
+                            {{ old('kategori') === 'ISO Terakreditasi Internasional' ? 'selected' : '' }}>ISO Terakreditasi
+                            Internasional</option>
+                        <option value="ISO Akreditasi KAN"
+                            {{ old('kategori') === 'ISO Akreditasi KAN' ? 'selected' : '' }}>
+                            ISO Akreditasi KAN</option>
+                        <option value="Sertifikasi Konstruksi Ketenagalistrikan"
+                            {{ old('kategori') === 'Sertifikasi Konstruksi Ketenagalistrikan' ? 'selected' : '' }}>
+                            Sertifikasi Konstruksi Ketenagalistrikan</option>
+                        <option value="SBU Ketenagalistrikan"
+                            {{ old('kategori') === 'SBU Ketenagalistrikan' ? 'selected' : '' }}>SBU Ketenagalistrikan
+                        </option>
+                        <option value="SBU JASA KONSULTASI UMUM"
+                            {{ old('kategori') === 'SBU JASA KONSULTASI UMUM' ? 'selected' : '' }}>SBU JASA KONSULTASI UMUM
+                        </option>
+                        <option value="PENDIRIAN BADAN USAHA"
+                            {{ old('kategori') === 'PENDIRIAN BADAN USAHA' ? 'selected' : '' }}>PENDIRIAN BADAN USAHA
+                        </option>
                     </select>
                     @error('kategori')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>

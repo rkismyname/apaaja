@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ViewPengajuanController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Role;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -30,11 +31,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin', [DashboardController::class, 'dashboardAdmin'])->name('admin');
         Route::get('/admin/jumlah-not-approved', [DashboardController::class, 'jumlahNotApproved'])->name('jumlah.not.approved');
         Route::get('/admin/jumlah-approved', [DashboardController::class, 'jumlahApproved'])->name('jumlah.approved');
+        Route::get('/admin/jumlah-ditolak', [DashboardController::class, 'jumlahDitolak'])->name('jumalh.ditolak');
         //Master Data
         Route::get('/md/md-perorangan', [MasterDataController::class, 'showPerorangan'])->name('md_tk');
         Route::get('/md/md-perusahaan', [MasterDataController::class, 'showPerusahaan'])->name('md_bu');
         Route::get('/md/detail-md-perorangan/{perorangan_id}', [MasterDataController::class, 'detailPerorangan_md'])->name('detailMD.tk');
         Route::get('/md/detail-md-perusahaan/{perusahaan_id}', [MasterDataController::class, 'detailPerusahaan_md'])->name('detailMD.bu');
+        Route::delete('/md/md-perorangan/{perorangan_id}', [MasterDataController::class, 'destroyTk'])->name('destroy.tk');
+        Route::delete('/md/md-perusahaan/{perusahaan_id}', [MasterDataController::class, 'destroyBu'])->name('destroy.bu');
         //Pengajuan
         Route::get('/pengajuan/pengajuan-tk', [ViewPengajuanController::class, 'peroranganAdmin'])->name('view_tk');
         Route::get('/pengajuan/pengajuan-bu', [ViewPengajuanController::class, 'perusahaanAdmin'])->name('view_bu');
@@ -43,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pengajuan/detail-pengajuan/update-status-tk/{tk_id}', [ViewPengajuanController::class, 'statusBerkasTk'])->name('status.tk');
         Route::get('/pengajuan/details-pengajuan/update-status-bu/{bu_id}', [ViewPengajuanController::class, 'statusBerkasBu'])->name('status.bu');
         Route::get('/pengajuan/detail-pengajuan/update-tk-cancelled/{tk_id}', [ViewPengajuanController::class, 'statusCancelledTk'])->name('cancelled.tk');
+        Route::get('/pengajuan/details-pengajuan/update-bu-cancelled/{bu_id}', [ViewPengajuanController::class, 'statusCancelledBu'])->name('cancelled.bu');
         //Layanan
         Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
         Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');

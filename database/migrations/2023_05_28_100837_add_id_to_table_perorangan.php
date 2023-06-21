@@ -14,7 +14,7 @@ class AddIdToTablePerorangan extends Migration
     public function up()
     {
         Schema::table('perorangan', function (Blueprint $table) {
-            $table->foreignId('id')->after('alamat')->constrained('users', 'id');
+            $table->foreignId('id')->after('alamat')->constrained('users', 'id')->onDelete('cascade');
         });
     }
 
