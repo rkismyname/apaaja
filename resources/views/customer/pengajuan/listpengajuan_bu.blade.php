@@ -57,10 +57,10 @@
                                                 class="px-2 py-1 font-semibold leading-tight text-yellow-100 bg-yellow-400 rounded-full dark:bg-yellow-400 dark:text-yellow-100">
                                                 Proses
                                             </span>
-                                        @elseif ($perusahaan->sertif_bu->status == 0)
+                                        @elseif ($perusahaan->sertif_bu->status == 2)
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-red-100 bg-red-700 rounded-full dark:bg-red-700 dark:text-red-100">
-                                                Proses
+                                                Ditolak
                                             </span>
                                         @else
                                             {{ $perusahaan->sertif_bu->status ?: '-' }}
