@@ -36,7 +36,7 @@
                         <!-- Field dan tombol submit lainnya -->
                         <!-- Field untuk unggahan file NIB -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="nib">File NIB (PDF)</label>
+                            <label class="block text-sm" for="nib">File NIB (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="nib" id="nib" accept=".pdf">
@@ -46,7 +46,7 @@
                         </div>
                         <!-- Field untuk unggahan file NPWP BU -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="npwp_bu">File NPWP Perusahaan (PDF)</label>
+                            <label class="block text-sm" for="npwp_bu">File NPWP Perusahaan (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="npwp_bu" id="npwp_bu" accept=".pdf">
@@ -56,7 +56,7 @@
                         </div>
                         <!-- Field untuk unggahan file akte pendirian -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="akte_pend">File Akte Pendirian (PDF)</label>
+                            <label class="block text-sm" for="akte_pend">File Akte Pendirian (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="akte_pend" id="akte_pend" accept=".pdf">
@@ -66,7 +66,7 @@
                         </div>
                         <!-- Field untuk unggahan file akte perusahaan -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="akte_peru">File Akte Perusahaan (PDF)</label>
+                            <label class="block text-sm" for="akte_peru">File Akte Perusahaan (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="akte_peru" id="akte_peru" accept=".pdf">
@@ -76,7 +76,7 @@
                         </div>
                         <!-- Field untuk unggahan file KTP -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="ktp">File KTP (PDF)</label>
+                            <label class="block text-sm" for="ktp">File KTP (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="ktp" id="ktp" accept=".pdf">
@@ -86,7 +86,7 @@
                         </div>
                         <!-- Field untuk unggahan file NPWP direktur -->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="npwp_dir">File NPWP Direktur (PDF)</label>
+                            <label class="block text-sm" for="npwp_dir">File NPWP Direktur (PDF Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="npwp_dir" id="npwp_dir" accept=".pdf">
@@ -96,7 +96,7 @@
                         </div>
                         <!-- Field Upload file bukti transfer-->
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <label class="block text-sm" for="bukti_trf">File Bukti Transfer (PDF)</label>
+                            <label class="block text-sm" for="bukti_trf">File Bukti Transfer (JPG, JPEG, atau PNG Maks 2MB)</label>
                             <input
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="bukti_trf" id="bukti_trf" accept=".pdf">

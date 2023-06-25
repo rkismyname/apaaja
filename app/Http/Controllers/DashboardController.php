@@ -44,10 +44,13 @@ class DashboardController extends Controller
     
     public function jumlahNotApproved()
     {
+        $userId = auth()->id();
         // Hitung jumlah pengajuan belum dikonfirmasi (not approved)
         $jumlahNotApproved = DB::table('sertif_tk')
+            ->where('id',$userId)
             ->where('status', 0)
             ->count() + DB::table('sertif_bu')
+            ->where('id',$userId)
             ->where('status', 0)
             ->count();
         
@@ -55,10 +58,13 @@ class DashboardController extends Controller
     }
     public function jumlahApproved()
     {
+        $userId = auth()->id();
         // Hitung jumlah pengajuan yang sudah dikonfirmasi (approved)
         $jumlahApproved = DB::table('sertif_tk')
+            ->where('id',$userId)
             ->where('status', 1)
             ->count() + DB::table('sertif_bu')
+            ->where('id',$userId)
             ->where('status', 1)
             ->count();
 
@@ -66,9 +72,12 @@ class DashboardController extends Controller
     }
     public function jumlahDitolak()
     {
+        $userId = auth()->id();
         $jumlahDitolak = DB::table('sertif_tk')
+        ->where('id',$userId)
         ->where('status', 2)
         ->count() + DB::table('sertif_bu')
+        ->where('id',$userId)
         ->where('status', 2)
         ->count();
 

@@ -11,12 +11,12 @@
             </h4>
             <div class="scrollable-container">
                 <p class="text-gray-600 dark:text-gray-400">
-                    1. Klik Pengajuan Perusahaan/Perorangan pada sidebar. Klik tombol Tambah Pengajuan untuk menambahkan pengajuan baru.<br>
+                    1. Klik Pengajuan Sertifikasi Tenaga Kerja/Badan Usaha pada sidebar. Klik tombol Tambah Pengajuan untuk menambahkan pengajuan baru.<br>
                     2. Pilih dan Isi inputan, jika sudah klik Tambah pengajuan.<br>
                     3. Jika berhasil, yang harus anda lakukan selanjutnya adalah mengisi berkas dengan cara klik isi berkas pengajuan.<br>
-                    4. Klik tombol Kembali, pada list perusahaan di Actions klik Transfer untuk melanjutkan proses pengajuan.<br>
-                    5. Silahkan transfer sesuai nominal yang tertera ke bank dan rekening yang sudah ditentukan. Jika sudah, upload bukti transfer dan klik Konfirmasi sudah transfer.<br>
-                    6. Jika sudah konfirmasi transfer, tunggu Admin untuk konfirmasi pengajuan dan status pengajuan akan berubah menjadi sudah approve.
+                    4. Jika berkas sudah berhasil di upload, status akan berubah menjadi "proses".<br>
+                    5. Admin akan mereview berkas pengajuan yang telah anda upload.<br>
+                    6. Jika berkas disetujui/ditolak, maka status akan berubah.<br>
                 </p>
             </div>
         </div>

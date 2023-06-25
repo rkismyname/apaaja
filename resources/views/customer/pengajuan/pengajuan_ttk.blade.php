@@ -37,7 +37,7 @@
                 <!-- Field dan tombol submit lainnya -->
                 <!-- Field untuk unggahan file NIB -->
                 <div class="mb-4">
-                    <label class="text-gray-700 dark:text-gray-200" for="ktp">File KTP (PDF)</label>
+                    <label class="text-gray-700 dark:text-gray-200" for="ktp">File KTP (PDF Maks 2MB)</label>
                     <input
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="ktp" id="ktp" accept=".pdf">
@@ -47,7 +47,7 @@
                 </div>
                 <!-- Field untuk unggahan file NPWP BU -->
                 <div class="mb-4">
-                    <label class="text-gray-700 dark:text-gray-200" for="npwp">File NPWP (PDF)</label>
+                    <label class="text-gray-700 dark:text-gray-200" for="npwp">File NPWP (PDF Maks 2MB)</label>
                     <input
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="npwp" id="npwp" accept=".pdf">
@@ -57,7 +57,7 @@
                 </div>
                 <!-- Field untuk unggahan file akte pendirian -->
                 <div class="mb-4">
-                    <label class="text-gray-700 dark:text-gray-200" for="ijazah">File Ijazah (PDF)</label>
+                    <label class="text-gray-700 dark:text-gray-200" for="ijazah">File Ijazah (PDF Maks 2MB)</label>
                     <input
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="ijazah" id="ijazah" accept=".pdf">
@@ -67,7 +67,7 @@
                 </div>
                 <!-- Field untuk unggahan file akte perusahaan -->
                 <div class="mb-4">
-                    <label class="text-gray-700 dark:text-gray-200" for="foto_terbaru">File Foto Terbaru (JPG, JPEG, atau PNG)</label>
+                    <label class="text-gray-700 dark:text-gray-200" for="foto_terbaru">File Foto Terbaru (JPG, JPEG, atau PNG Maks 2MB)</label>
                     <input
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="foto_terbaru" id="foto_terbaru" accept=".jpg, .jpeg, .png">
@@ -77,7 +77,7 @@
                 </div>
                 <!-- Field untuk upload file bukti trf -->
                 <div class="mb-4">
-                    <label class="text-gray-700 dark:text-gray-200" for="bukti_trf">File Bukti Transfer (JPG, JPEG, atau PNG)</label>
+                    <label class="text-gray-700 dark:text-gray-200" for="bukti_trf">File Bukti Transfer (JPG, JPEG, atau PNG Maks 2MB)</label>
                     <input
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="bukti_trf" id="bukti_trf" accept=".jpg, .jpeg, .png">

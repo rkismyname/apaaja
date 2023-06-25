@@ -43,11 +43,16 @@ class PengajuanController extends Controller
             'nama_perorangan' => 'required',
             'alamat' => 'required',
             'tanggal_lahir' => 'required',
-            'no_ktp' => 'required|regex:/^[0-9]+$/',
-            'no_npwp' => 'required|regex:/^[0-9]+$/',
-            'no_telepon' => 'required|regex:/^[0-9]+$/',
+            'no_ktp' => 'required|regex:/^[0-9]+$/|size:16',
+            'no_npwp' => 'required|regex:/^[0-9\-,.]+$/|size:20',
+            'no_telepon' => 'required|regex:/^[0-9]+$/|between:10,12',
             'kategori' => 'required',
             'layanan' => 'required',
+        ], [
+            '*.required' => 'Wajib diisi',
+            'no_ktp.size' => 'Nomor KTP harus 16 digit',
+            'no_npwp.size' => 'Nomor NPWP harus 20 karakter',
+            'no_telepon.between' => 'Nomor telepon harus 10-12 digit'
         ]);
 
         $selectedKategori = $request->input('kategori');
@@ -72,9 +77,9 @@ class PengajuanController extends Controller
     }
 
 
-    public function deletePerorangan($perorangan_id)
+    public function deletePerorangan($id)
     {
-        $perorangan = Perorangan::findOrFail($perorangan_id);
+        $perorangan = Perorangan::findOrFail($id);
         $perorangan->sertif_tk()->delete();
         $perorangan->delete();
 
@@ -182,16 +187,19 @@ class PengajuanController extends Controller
             'kategori' => 'required',
             'layanan' => 'required',
             'nama_perorangan' => 'required|string',
-            'no_telepon' => 'required|regex:/^[0-9]+$/',
-            'no_npwp' => 'required|regex:/^[0-9\-,.]+$/',
-            'no_ktp' => 'required|regex:/^[0-9]+$/',
+            'no_telepon' => 'required|regex:/^[0-9]+$/|between: 10,12',
+            'no_npwp' => 'required|regex:/^[0-9\-,.]+$/|size: 20',
+            'no_ktp' => 'required|regex:/^[0-9]+$/|size:16',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string',
         ],[
             '*.required' => 'Wajib diisi',
             'no_telepon.regex' => 'Inputan harus berupa angka',
             'no_npwp.regex' => 'Inputan harus berupa angka',
-            'no_ktp.regex' => 'Inputan harus berupa angka'
+            'no_ktp.regex' => 'Inputan harus berupa angka',
+            'no_ktp.size' => 'Nomor KTP harus 16 digit',
+            'no_npwp.size' => 'Nnomor NPWP harus 20 karakter',
+            'no_telepon.between' => 'Nomor telepon harus 10-12 digit'
         ]);
 
         $perorangan = new Perorangan();
@@ -243,16 +251,23 @@ class PengajuanController extends Controller
     }
     public function updatePerusahaan(Request $request, $perusahaan_id)
     {
+        // dd($request->all());
         $data = $request->validate([
             'nama_perorangan' => 'required',
             'nama_pj' => 'required',
             'bidang' => 'required',
-            'tlp_perusahaan' => 'required|regex:/^[0-9]+$/',
+            'tlp_perusahaan' => 'required|regex:/^[0-9]+$/|between: 7,12',
             'email_perusahaan' => 'required',
-            'tlp_pj' => 'required|regex:/^[0-9]+$/',
+            'tlp_pj' => 'required|regex:/^[0-9]+$/|between: 10,12',
             'alamat_perusahaan' => 'required',
             'kategori' => 'required',
             'layanan' => 'required',
+        ], [
+            '*.required' => 'Wajib diisi',
+            'tlp_perusahaan.regex' => 'Inputan harus berupa angka',
+            'tlp_pj.regex' => 'Inputan harus berupa angka',
+            'tlp_perusahaan.between' => 'Nomor telepon perusahaan harus 7-12 digit',
+            'tlp_pj.between' => 'Nomor telepon PJ / direktur harus 10-12 digit'
         ]);
 
         $selectedKategori = $request->input('kategori');
@@ -278,9 +293,9 @@ class PengajuanController extends Controller
     }
 
 
-    public function deletePerusahaan($perusahaan_id)
+    public function deletePerusahaan($id)
     {
-        $perusahaan = Perusahaan::findOrFail($perusahaan_id);
+        $perusahaan = Perusahaan::findOrFail($id);
         $perusahaan->sertif_bu()->delete();
         $perusahaan->delete();
 
@@ -408,14 +423,16 @@ class PengajuanController extends Controller
             'nama_perusahaan' => 'required|string',
             'nama_pj' => 'required|string',
             'bidang' => 'required|string',
-            'tlp_perusahaan' => 'required|regex:/^[0-9\(,)]+$/',
+            'tlp_perusahaan' => 'required|regex:/^[0-9\(,)]+$/|between: 7,12',
             'email_perusahaan' => 'required',
-            'tlp_pj' => 'required|regex:/^[0-9]+$/',
+            'tlp_pj' => 'required|regex:/^[0-9]+$/|between: 10,12',
             'alamat_perusahaan' => 'required|string'
         ], [
             '*.required' => 'Wajib diisi',
             'tlp_perusahaan.regex' => 'Inputan harus berupa angka',
-            'tlp_pj.regex' => 'Inputan harus berupa angka'
+            'tlp_pj.regex' => 'Inputan harus berupa angka',
+            'tlp_perusahaan.between' => 'Nomor telepon perusahaan harus 7-12 digit',
+            'tlp_pj.between' => 'Nomor telepon PJ / direktur harus 10-12 digit'
         ]);
 
         $perusahaan = new perusahaan();

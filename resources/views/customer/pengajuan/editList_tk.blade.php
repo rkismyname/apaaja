@@ -14,6 +14,10 @@
                     <input type="text" name="nama_perorangan" id="nama_perorangan"
                         value="{{ $perorangan->nama_perorangan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        @error('nama_perorangan')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat">
@@ -21,6 +25,10 @@
                     </label>
                     <textarea name="alamat" id="alamat"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $perorangan->alamat }}</textarea>
+                        @error('alamat')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                         @enderror
+                
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">
@@ -28,6 +36,10 @@
                     </label>
                     <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{ $perorangan->tanggal_lahir }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        @error('tanggal_lahir')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="no_ktp">
@@ -35,6 +47,10 @@
                     </label>
                     <input type="text" name="no_ktp" id="no_ktp" value="{{ $perorangan->no_ktp }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        @error('no_ktp')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="no_npwp">
@@ -42,6 +58,9 @@
                     </label>
                     <input type="text" name="no_npwp" id="no_npwp" value="{{ $perorangan->no_npwp }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('no_npwp')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="no_telepon">
@@ -49,6 +68,10 @@
                     </label>
                     <input type="text" name="no_telepon" id="no_telepon" value="{{ $perorangan->no_telepon }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        @error('no_ktp')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="kategori">

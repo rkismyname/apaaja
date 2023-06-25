@@ -14,6 +14,10 @@
                     <input type="text" name="nama_perusahaan" id="nama_perusahaan"
                         value="{{ $perusahaan->nama_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('nama_perusahaan')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="nama_pj">
@@ -21,6 +25,10 @@
                     </label>
                     <input type="text" name="nama_pj" id="nama_pj" value="{{ $perusahaan->nama_pj }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('nama_pj')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="bidang">
@@ -28,7 +36,10 @@
                     </label>
                     <input type="text" name="bidang" id="bidang" value="{{ $perusahaan->bidang }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
+                            @error('bidang')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+        </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tlp_perusahaan">
                         Telepon Perusahaan
@@ -36,6 +47,10 @@
                     <input type="text" name="tlp_perusahaan" id="tlp_perusahaan"
                         value="{{ $perusahaan->tlp_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('tlp_perusahaan')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="email_perusahaan">
@@ -44,6 +59,10 @@
                     <input type="email" name="email_perusahaan" id="email_perusahaan"
                         value="{{ $perusahaan->email_perusahaan }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('email_perusahaan')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tlp_pj">
@@ -51,6 +70,10 @@
                     </label>
                     <input type="text" name="tlp_pj" id="tlp_pj" value="{{ $perusahaan->tlp_pj }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('tlp_pj')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat_perusahaan">
@@ -58,6 +81,10 @@
                     </label>
                     <textarea name="alamat_perusahaan" id="alamat_perusahaan"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $perusahaan->alamat_perusahaan }}</textarea>
+                            @error('alamat_perusahaan')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+
                 </div>
                 <div class="mb-2">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="kategori">
