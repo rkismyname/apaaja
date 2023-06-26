@@ -55,7 +55,7 @@
                 </div>
                 <div class="mb-4">
                     <label class="text-gray-700 dark:text-gray-200" for="no_npwp">
-                        No NPWP
+                        No NPWP (20 Karakter termasuk - dan .)
                     </label>
                     <input type="text" name="no_npwp" id="no_npwp" value="{{ old('no_npwp') }}"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="mb-4">
                     <label class="text-gray-700 dark:text-gray-200" for="no_ktp">
-                        No KTP
+                        No KTP (16 Angka)
                     </label>
                     <input type="text" name="no_ktp" id="no_ktp" value="{{ old('no_ktp') }}"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
@@ -82,6 +82,11 @@
                     @error('tanggal_lahir')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
+                    <style>
+                    input[type="date"]::-webkit-calendar-picker-indicator{
+                        filter:invert(1);
+                    }
+                    </style>
                 </div>
                 <div class="mb-4">
                     <label class="text-gray-700 dark:text-gray-200" for="alamat">

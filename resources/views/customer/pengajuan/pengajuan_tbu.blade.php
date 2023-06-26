@@ -41,7 +41,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="nib" id="nib" accept=".pdf">
                             @error('nib')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field untuk unggahan file NPWP BU -->
@@ -51,7 +51,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="npwp_bu" id="npwp_bu" accept=".pdf">
                             @error('npwp_bu')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field untuk unggahan file akte pendirian -->
@@ -61,7 +61,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="akte_pend" id="akte_pend" accept=".pdf">
                             @error('akte_pend')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field untuk unggahan file akte perusahaan -->
@@ -71,7 +71,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="akte_peru" id="akte_peru" accept=".pdf">
                             @error('akte_peru')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field untuk unggahan file KTP -->
@@ -81,7 +81,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="ktp" id="ktp" accept=".pdf">
                             @error('ktp')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field untuk unggahan file NPWP direktur -->
@@ -91,7 +91,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="npwp_dir" id="npwp_dir" accept=".pdf">
                             @error('npwp_dir')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Field Upload file bukti transfer-->
@@ -101,7 +101,7 @@
                                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 type="file" name="bukti_trf" id="bukti_trf" accept=".pdf">
                             @error('bukti_trf')
-                                <span class="text-danger">{{ $message }}</span>
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- Tombol submit dan lainnya -->

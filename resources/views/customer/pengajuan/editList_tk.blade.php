@@ -79,10 +79,9 @@
                     </label>
                     <select name="kategori" id="kategori"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                        <option value="">--Pilih Kategori--</option>
-                        <option value="Pelatihan" {{ old('kategori') === 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option>
+                        <option value="Pelatihan" {{ old('kategori') === 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option> --}}
                         <option value="SKK Konstruksi" {{ old('kategori') === 'SKK Konstruksi' ? 'selected' : '' }}>SKK
-                            Konstruksi</option>
+                            Konstruksi</option> 
                     </select>
                     @error('kategori')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -94,7 +93,7 @@
                     </label>
                     <select name="layanan" id="layanan"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-                        <option value="">--Pilih Layanan--</option>
+                        {{-- <option value="">--Pilih Layanan--</option> --}}
                     </select>
                     @error('layanan')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>

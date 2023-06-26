@@ -117,7 +117,8 @@ class PengajuanController extends Controller
             'ijazah.required' => 'WAJIB UPLOAD FILE IJAZAH',
             'foto_terbaru.required' => 'WAJIB UPLOAD FILE FOTO TERBARU',
             'foto_terbaru.image' => 'FORMAT FILE HARUS JPG. JPEG, atau PNG',
-            'bukti_trf.required' => 'Wajib mengunggah file Bukti Transfer'
+            'bukti_trf.required' => 'Wajib Mengunggah File Bukti Transfer',
+            '*.max' => 'Ukuran File Tidak Boleh Lebih dari 2MB'
         ]);
 
         //UPLOAD FILE KTP
@@ -253,7 +254,7 @@ class PengajuanController extends Controller
     {
         // dd($request->all());
         $data = $request->validate([
-            'nama_perorangan' => 'required',
+            'nama_perusahaan' => 'required',
             'nama_pj' => 'required',
             'bidang' => 'required',
             'tlp_perusahaan' => 'required|regex:/^[0-9]+$/|between: 7,12',
@@ -327,13 +328,14 @@ class PengajuanController extends Controller
             'bukti_trf' => 'required|image|mimes:jpg,jpeg,png|max:2048'
             // 'id' => auth()->user()->id
         ], [
-            'nib.required' => 'Wajib mengunggah file NIB',
-            'npwp_bu.required' => 'Wajib mengunggah file NPWP Perusahaan',
-            'akte_pend.required' => 'Wajib mengunggah file Akte Pendirian',
-            'akte_peru.required' => 'Wajib mengunggah file Akte Perusahaan',
-            'ktp.required' => 'Wajib mengunggah file KTP',
-            'npwp_dir.required' => 'Wajib mengunggah file NPWP Direktur',
-            'bukti_trf.required' => 'Wajib mengunggah file Bukti Transfer',
+            'nib.required' => 'Wajib Mengunggah File NIB',
+            'npwp_bu.required' => 'Wajib Mengunggah File NPWP Perusahaan',
+            'akte_pend.required' => 'Wajib Mengunggah File Akte Pendirian',
+            'akte_peru.required' => 'Wajib Mengunggah File Akte Perusahaan',
+            'ktp.required' => 'Wajib Mengunggah File KTP',
+            'npwp_dir.required' => 'Wajib Mengunggah File NPWP Direktur',
+            'bukti_trf.required' => 'Wajib Mengunggah File Bukti Transfer',
+            '*.max' => 'Ukuran File Tidak Boleh Lebih dari 2MB'
         ]);
 
         // Mengunggah file NIB

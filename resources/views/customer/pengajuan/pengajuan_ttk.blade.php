@@ -42,7 +42,7 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="ktp" id="ktp" accept=".pdf">
                     @error('ktp')
-                        <span class="text-danger">{{ $message }}</span>
+                       <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
                 <!-- Field untuk unggahan file NPWP BU -->
@@ -52,7 +52,7 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="npwp" id="npwp" accept=".pdf">
                     @error('npwp')
-                        <span class="text-danger">{{ $message }}</span>
+                       <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
                 <!-- Field untuk unggahan file akte pendirian -->
@@ -62,7 +62,7 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="ijazah" id="ijazah" accept=".pdf">
                     @error('ijazah')
-                        <span class="text-danger">{{ $message }}</span>
+                       <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
                 <!-- Field untuk unggahan file akte perusahaan -->
@@ -72,7 +72,7 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="foto_terbaru" id="foto_terbaru" accept=".jpg, .jpeg, .png">
                     @error('foto_terbaru')
-                        <span class="text-danger">{{ $message }}</span>
+                       <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
                 <!-- Field untuk upload file bukti trf -->
@@ -82,7 +82,7 @@
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         type="file" name="bukti_trf" id="bukti_trf" accept=".jpg, .jpeg, .png">
                     @error('bukti_trf')
-                        <span class="text-danger">{{ $message }}</span>
+                       <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
                 <!-- Tombol submit dan lainnya -->
